@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  TorontoActivities
 //
-//  Created by Thomas Alexanian on 2016-12-17.
+//  Created by Tomza on 2016-12-17.
 //  Copyright © 2016 Tomza. All rights reserved.
 //
 

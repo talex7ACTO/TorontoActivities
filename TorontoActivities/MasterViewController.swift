@@ -2,8 +2,8 @@
 //  MasterViewController.swift
 //  TorontoActivities
 //
-//  Created by Hamza Lakhani on 2016-12-15.
-//  Copyright © 2016 Hamza Lakhani. All rights reserved.
+//  Created by Tomza on 2016-12-15.
+//  Copyright © 2016 Tomza. All rights reserved.
 //
 
 import UIKit
@@ -19,6 +19,9 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let searchManager = SearchManager()
+        searchManager.getJson()
         
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self

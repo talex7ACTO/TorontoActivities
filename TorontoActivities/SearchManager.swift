@@ -2,15 +2,16 @@
 //  SearchManager.swift
 //  TorontoActivities
 //
-//  Created by Thomas Alexanian on 2016-12-18.
+//  Created by Tomza on 2016-12-18.
 //  Copyright © 2016 Tomza. All rights reserved.
 //
 
 import Foundation
 import UIKit
 import CoreData
+import SwiftyJSON
 
-class SearchManager: NSObject {
+class SearchManager {
     
     
     let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -43,7 +44,7 @@ class SearchManager: NSObject {
         dataTask.resume()
     }
 
-    func dataParse(array: Array<[String: Any]>) {
+    func dataParse(array: [[String: Any]]) {
         for f in array {
             
             //only include facilities with categories containing skate or hockey
@@ -60,7 +61,10 @@ class SearchManager: NSObject {
                 facility.address = f["Address"] as? String
                 facility.district = f["District"] as? String
                 facility.phone = f["Phone"] as? String
-              //  facility.course.addingObjects(from: f["Courses"])
+                
+                let courses = f["Courses"] as! [[String : AnyObject]]
+                
+                facility.course?.addingObjects(from: courses)
                 
                 do {
                     try self.moc.save()

@@ -2,8 +2,8 @@
 //  TorontoActivitiesTests.swift
 //  TorontoActivitiesTests
 //
-//  Created by Hamza Lakhani on 2016-12-14.
-//  Copyright © 2016 Hamza Lakhani. All rights reserved.
+//  Created by Tomza on 2016-12-14.
+//  Copyright © 2016 Tomza. All rights reserved.
 //
 
 import XCTest
