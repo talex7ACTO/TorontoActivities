@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UISearchBarDelegate{
+class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UISearchBarDelegate,NSFetchedResultsControllerDelegate{
     @IBOutlet var tableSearch: UITableView!
     
     // MARK: - Properties
@@ -18,8 +18,12 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var shouldShowSearchResults = false
     let searchController = UISearchController(searchResultsController: nil)
     let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    lazy var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>! = {
+        return self.initializeFetchedResultsController()
+    }()
     
     var results = [Facility]()
+
     var districts = Set<String>()
     
     override func viewDidLoad() {
@@ -38,6 +42,7 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchController.searchBar.scopeButtonTitles = ["North", "South", "West", "East"]
         tableSearch.tableHeaderView = searchController.searchBar
         
+        
         //configureSearchController()
         
         facilityArray = [
@@ -54,10 +59,10 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         //Set of Districts
         for facility in results{
-            self.districts.insert(facility["District"])
+            self.districts.insert(facility.district!)
         }
 
-        
+        // request for facility object
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Facility")
         do {
             self.results = try self.moc.fetch(request) as! [Facility]
@@ -65,43 +70,70 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             fatalError("Failed to fetch Facilities: \(error)")
         }
         
+
+
         
     }
+    //fetch results function
+    func initializeFetchedResultsController() -> NSFetchedResultsController<NSFetchRequestResult>? {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Facility")
+        let districtSort = NSSortDescriptor(key: #keyPath (Facility.district), ascending: true)
+        
+        let facilityNameSort = NSSortDescriptor(key: #keyPath (Facility.name), ascending: true)
+        request.sortDescriptors = [districtSort, facilityNameSort]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: self.moc, sectionNameKeyPath: #keyPath(Facility.district) , cacheName: "rootCache")
+        fetchedResultsController.delegate = self
+        
+        do {
+            try fetchedResultsController.performFetch()
+            return fetchedResultsController
+        } catch {
+            fatalError("Failed to initialize FetchedResultsController: \(error)")
+        }
+    }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func configureCell(cell: UITableViewCell, indexPath: NSIndexPath) {
+        guard let selectedObject = fetchedResultsController.object(at: indexPath as IndexPath) as? Facility else { fatalError("Unexpected Object in FetchedResultsController") }
+        // Populate cell from the NSManagedObject instance
+        print("Object for configuration: \(selectedObject)")
     }
     
     // MARK: - Table View
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return self.districts.count
+        return fetchedResultsController.sections!.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if shouldShowSearchResults {
             return filteredfac.count
         }
-        else {
-            return facilityArray.count
+        else{ guard let sections = fetchedResultsController.sections else {
+            fatalError("No sections in fetchedResultsController")
+        }
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
+            
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! TableViewCell
         
-        let facilityObject: Facilites
+        var facilityObject = Facility()
         
         if shouldShowSearchResults {
-            facilityObject = filteredfac[indexPath.row]
+            facilityObject = results[indexPath.row]
             
         }else{
             
-            facilityObject = facilityArray[indexPath.row]
+            configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
         }
         cell.nameLabel!.text = facilityObject.name
-        cell.nameLocation!.text = facilityObject.location
+        //cell.nameLocation!.text = facilityObject.location
         return cell
     }
     
