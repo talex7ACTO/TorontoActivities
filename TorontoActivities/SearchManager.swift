@@ -13,12 +13,12 @@ import SwiftyJSON
 
 class SearchManager {
     
-    
+    //Properties
     let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     func getJson() {
         
-        //Getting JSON Data
+        //Getting JSON data
         let session = URLSession(configuration: .default)
         let url = URL(string: "https://www1.toronto.ca/parks/assets/xml/dropinweek1.json")!
         
@@ -33,9 +33,10 @@ class SearchManager {
                 return
             }
             
-            //Test if data is in correct format by printing each facility name and performing count
+            //Covert data into JSON array of facilities
             if let array = try? JSONSerialization.jsonObject(with: data, options: []) as! [[String: AnyObject]] {
-            
+                
+                //Parse through array and populate database on main thread
                 DispatchQueue.main.async {
                     self.dataParse(array: array)
                 }
@@ -43,11 +44,11 @@ class SearchManager {
         })
         dataTask.resume()
     }
-
+    
     func dataParse(array: [[String: Any]]) {
         for f in array {
             
-            //only include facilities with categories containing skate or hockey
+            //only include facilities with categories containing skate or hockey (and not in Etobicoke York)
             
             if (((f["Categories"] as! String).range(of: "Skate") != nil) || (f["Categories"] as! String).range(of: "Hockey") != nil) && (f["District"] as! String) != "Etobicoke York"{
                 
@@ -61,26 +62,48 @@ class SearchManager {
                 facility.address = f["Address"] as? String
                 facility.district = f["District"] as? String
                 facility.phone = f["Phone"] as? String
+                facility.locationID = f["LocationID"] as? String
                 
-                let courses = f["Courses"] as! [[String : AnyObject]]
+                let courses = f["Courses"] as! [[String: AnyObject]]
                 
-                facility.course?.addingObjects(from: courses)
+                //iterate through each course at a given facility and set attributes and relationship to facility
+                for c in courses{
+                    
+                    let course = NSEntityDescription.insertNewObject(forEntityName: "Course", into: self.moc) as! Course
+                    
+                    course.ageGroup = c["AgeGroup"] as? String
+//                    course.ageMax = Int32(c["AgeMax"] as! String)!  sometimes nil look into data
+//                    course.ageMin = Int32(c["AgeMin"] as! String)!
+                    course.category = c["Categories"] as? String
+                    course.courseID = c["CourseID"] as? String
+                    course.courseName = c["CourseName"] as? String
+                    course.programName = c["ProgramName"] as? String
+                    course.facility = facility
+                    
+                    
+                    //iterate through each session for a given course and set attributes and relationship to facility
+                    for s in c["Sessions"] as! [[String: String]] {
+                        
+                        let session = NSEntityDescription.insertNewObject(forEntityName: "Session", into: self.moc) as! Session
+                        
+                        session.time = s["Time"]!
+                        session.date = s["Date"]!
+                        session.course = course
+                    }
+                }
                 
+                //save moc to database
                 do {
                     try self.moc.save()
                 }catch {
                     let error = error
                     print("\(error)")
                 }
-                //       for c in f["Courses"] as! [AnyObject]{
                 
-                //      facility.course.addingObjects(from: f["Courses"])
-                //}
-                //               print("\(facility["LocationName"]!)")
                 
             }
         }
-
+        
     }
-
+    
 }
