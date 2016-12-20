@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import CoreData
-import SwiftyJSON
 
 class SearchManager {
     
@@ -81,7 +80,7 @@ class SearchManager {
                     course.facility = facility
                     
                     
-                    //iterate through each session for a given course and set attributes and relationship to facility
+                    //Iterate through each session for a given course and set attributes and relationship to facility
                     for s in c["Sessions"] as! [[String: String]] {
                         
                         let session = NSEntityDescription.insertNewObject(forEntityName: "Session", into: self.moc) as! Session
@@ -92,7 +91,7 @@ class SearchManager {
                     }
                 }
                 
-                //save moc to database
+                //Save moc to database
                 do {
                     try self.moc.save()
                 }catch {
