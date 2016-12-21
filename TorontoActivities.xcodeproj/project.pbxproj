@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74DCEADD1E0AD210005532D5 /* FacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DCEADC1E0AD210005532D5 /* FacilitiesViewController.swift */; };
 		CAA347721E01DEA4009E49BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA347711E01DEA4009E49BC /* AppDelegate.swift */; };
 		CAA347771E01DEA4009E49BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA347751E01DEA4009E49BC /* Main.storyboard */; };
 		CAA347791E01DEA4009E49BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA347781E01DEA4009E49BC /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		74DCEADC1E0AD210005532D5 /* FacilitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilitiesViewController.swift; sourceTree = "<group>"; };
 		CAA3476E1E01DEA4009E49BC /* TorontoActivities.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TorontoActivities.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA347711E01DEA4009E49BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAA347761E01DEA4009E49BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			children = (
 				CAA347711E01DEA4009E49BC /* AppDelegate.swift */,
 				CAA347911E02F8DC009E49BC /* MasterViewController.swift */,
+				74DCEADC1E0AD210005532D5 /* FacilitiesViewController.swift */,
 				CAA347971E031A54009E49BC /* TableViewCell.swift */,
 				CAA347951E030D8F009E49BC /* Facilites.swift */,
 				CAA347931E02F8F2009E49BC /* DetailedViewController.swift */,
@@ -272,6 +275,7 @@
 				CAA3479D1E088855009E49BC /* TorontoActivities.xcdatamodeld in Sources */,
 				CAA347721E01DEA4009E49BC /* AppDelegate.swift in Sources */,
 				CAA3479A1E08884A009E49BC /* SearchManager.swift in Sources */,
+				74DCEADD1E0AD210005532D5 /* FacilitiesViewController.swift in Sources */,
 				CAA347961E030D8F009E49BC /* Facilites.swift in Sources */,
 				CAA347941E02F8F2009E49BC /* DetailedViewController.swift in Sources */,
 			);
