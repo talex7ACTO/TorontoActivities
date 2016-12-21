@@ -49,19 +49,78 @@ class SearchManager {
             
             //only include facilities with categories containing skate or hockey (and not in Etobicoke York)
             
-            if (((f["Categories"] as! String).range(of: "Skate") != nil) || (f["Categories"] as! String).range(of: "Hockey") != nil) && (f["District"] as! String) != "Etobicoke York"{
+            if (((f["Categories"] as! String).contains("Skate")) || (f["Categories"] as! String).contains("Hockey")) && (f["District"] as! String) != "Etobicoke York"
+            {
                 
-                let facility = NSEntityDescription.insertNewObject(forEntityName: "Facility", into: self.moc) as! Facility
                 
-                facility.accessibility = f["Accessible"] as? String
-                facility.name = f["LocationName"] as? String
-                facility.longitude = Float(f["Longitude"]! as! String)!
-                facility.latitude = Float(f["Latitude"]! as! String)!
-                facility.postalCode = f["PostalCode"] as? String
-                facility.address = f["Address"] as? String
-                facility.district = f["District"] as? String
-                facility.phone = f["Phone"] as? String
-                facility.locationID = f["LocationID"] as? String
+                //Fetching all Facilities
+                let facilitiesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Facility")
+                let fetchedFacilities : [Facility]
+                
+                do {
+                    fetchedFacilities = try! moc.fetch(facilitiesFetch) as! [Facility]
+                } catch {
+                    fatalError("Failed to fetch employees: \(error)")
+                }
+                
+                
+                //Creating a Facility object
+                
+                let facility : Facility
+                
+                //Checking to see if object already exists in database
+                for result in fetchedFacilities {
+                    
+                    //If exists, set Facilitiy object to result (which is duplicate object located in database)
+                    if result.locationID == f["LocationID"] as? String{
+                        facility = result
+                        
+                    //If it does not exist, create new Facility managedObject and set all attributes
+                    } else {
+                        facility = NSEntityDescription.insertNewObject(forEntityName: "Facility", into: moc) as! Facility
+                        
+                        facility.accessibility = f["Accessible"] as? String
+                        facility.name = f["LocationName"] as? String
+                        facility.longitude = Float(f["Longitude"]! as! String)!
+                        facility.latitude = Float(f["Latitude"]! as! String)!
+                        facility.postalCode = f["PostalCode"] as? String
+                        facility.address = f["Address"] as? String
+                        facility.phone = f["Phone"] as? String
+                        facility.locationID = f["LocationID"] as? String
+                    }
+                }
+            
+                //Fetching all districts
+                let districtsFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "District")
+                let fetchedDistricts : [District]
+                
+                do {
+                    fetchedDistricts = try! moc.fetch(districtsFetch) as! [District]
+                } catch {
+                    fatalError("Failed to fetch employees: \(error)")
+                }
+                
+                
+                //Checking to see if object exists in database
+                for result in fetchedDistricts {
+                    
+                    //If exists, set object pulled from database to relationship with facility
+                    if result.name == f["District"] as? String{
+                        facility.district = result
+                    } else {
+                        
+                    //If it does not exist, create a new District managedObject and set attributes and then set relationship with facility
+                    let newDistrict = NSEntityDescription.insertNewObject(forEntityName: "District", into: self.moc) as! District
+                    newDistrict.name = f["District"] as? String
+                    facility.district = newDistrict
+                    }
+                }
+                
+                
+                let district = NSEntityDescription.insertNewObject(forEntityName: "District", into: self.moc) as! District
+                district.name = f["District"] as? String
+                facility.district = district
+                
                 
                 let courses = f["Courses"] as! [[String: AnyObject]]
                 
