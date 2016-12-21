@@ -75,7 +75,7 @@ class SearchManager {
                     if result.locationID == f["LocationID"] as? String{
                         facility = result
                         
-                    //If it does not exist, create new Facility managedObject and set all attributes
+                        //If it does not exist, create new Facility managedObject and set all attributes
                     } else {
                         facility = NSEntityDescription.insertNewObject(forEntityName: "Facility", into: moc) as! Facility
                         
@@ -89,7 +89,7 @@ class SearchManager {
                         facility.locationID = f["LocationID"] as? String
                     }
                 }
-            
+                
                 //Fetching all districts
                 let districtsFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "District")
                 let fetchedDistricts : [District]
@@ -109,10 +109,10 @@ class SearchManager {
                         facility.district = result
                     } else {
                         
-                    //If it does not exist, create a new District managedObject and set attributes and then set relationship with facility
-                    let newDistrict = NSEntityDescription.insertNewObject(forEntityName: "District", into: self.moc) as! District
-                    newDistrict.name = f["District"] as? String
-                    facility.district = newDistrict
+                        //If it does not exist, create a new District managedObject and set attributes and then set relationship with facility
+                        let newDistrict = NSEntityDescription.insertNewObject(forEntityName: "District", into: self.moc) as! District
+                        newDistrict.name = f["District"] as? String
+                        facility.district = newDistrict
                     }
                 }
                 
@@ -122,46 +122,104 @@ class SearchManager {
                 facility.district = district
                 
                 
+                
+                
+                
+                
+                
+                
                 let courses = f["Courses"] as! [[String: AnyObject]]
                 
                 //iterate through each course at a given facility and set attributes and relationship to facility
                 for c in courses{
+                    let courseFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Course")
+                    let fetchedCourses : [Course]
                     
-                    let course = NSEntityDescription.insertNewObject(forEntityName: "Course", into: self.moc) as! Course
-                    
-                    course.ageGroup = c["AgeGroup"] as? String
-//                    course.ageMax = Int32(c["AgeMax"] as! String)!  sometimes nil look into data
-//                    course.ageMin = Int32(c["AgeMin"] as! String)!
-                    course.category = c["Categories"] as? String
-                    course.courseID = c["CourseID"] as? String
-                    course.courseName = c["CourseName"] as? String
-                    course.programName = c["ProgramName"] as? String
-                    course.facility = facility
+                    do {
+                        fetchedCourses = try! moc.fetch(courseFetch) as! [Course]
+                    } catch {
+                        fatalError("Failed to fetch employees: \(error)")
+                    }
                     
                     
-                    //Iterate through each session for a given course and set attributes and relationship to facility
-                    for s in c["Sessions"] as! [[String: String]] {
+                    //Creating a Course object
+                    
+                    let courseObject : Course
+                    
+                    //Checking to see if object already exists in database
+                    for result in fetchedCourses {
                         
-                        let session = NSEntityDescription.insertNewObject(forEntityName: "Session", into: self.moc) as! Session
+                        //If exists, set Facilitiy object to result (which is duplicate object located in database)
+                        if result.courseID == c["CourseID"] as? String{
+                            courseObject = result
+                            
+                            //If it does not exist, create new Facility managedObject and set all attributes
+                        } else{
+                            let course = NSEntityDescription.insertNewObject(forEntityName: "Course", into: self.moc) as! Course
+                            
+                            //                    course.ageMax = Int32(c["AgeMax"] as! String)!  sometimes nil look into data
+                            //                    course.ageMin = Int32(c["AgeMin"] as! String)!
+                            course.category = c["Categories"] as? String
+                            course.courseID = c["CourseID"] as? String
+                            course.courseName = c["CourseName"] as? String
+                            course.facility = facility
+                        }
+                    
+                    
                         
-                        session.time = s["Time"]!
-                        session.date = s["Date"]!
-                        session.course = course
+                        
+                        let sessions = c["Session"] as! [[String: String]]
+                        
+                        //Iterate through each session for a given course and set attributes and relationship to facility
+                        for s in sessions {
+                            let sessionsFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Session")
+                            let fetchedSessions : [Session]
+                            
+                            do {
+                                fetchedSessions = try! moc.fetch(sessionsFetch) as! [Session]
+                            } catch {
+                                fatalError("Failed to fetch employees: \(error)")
+                            }
+                            
+                            
+                            //Creating a Facility object
+                            
+                            let sessionObject : Session
+                            
+                            //Checking to see if object already exists in database
+                            for result in fetchedSessions {
+                                
+                                //If exists, set Facilitiy object to result (which is duplicate object located in database)
+                                if ((result.date! == s["Date"]!) && (result.time! == s["Time"]!))
+                                        {
+                                            
+                                            sessionObject = result
+                                            
+                                            //If it does not exist, create new Facility managedObject and set all attributes
+                                    } else {
+                                    let session = NSEntityDescription.insertNewObject(forEntityName: "Session", into: self.moc) as! Session
+                                    
+                                    session.time = s["Time"]!
+                                    session.date = s["Date"]!
+                                    session.course = course
+                                    
+                                }
+                            }
+                        }
+                        
+                        //Save moc to database
+                        do {
+                            try self.moc.save()
+                        }catch {
+                            let error = error
+                            print("\(error)")
+                        }
+                        
+                        
                     }
                 }
                 
-                //Save moc to database
-                do {
-                    try self.moc.save()
-                }catch {
-                    let error = error
-                    print("\(error)")
-                }
-                
-                
             }
-        }
-        
-    }
-    
+            
 }
+
