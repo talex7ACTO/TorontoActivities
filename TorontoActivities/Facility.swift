@@ -23,6 +23,8 @@ class Facility: Object, Mappable  {
     dynamic var postalCode = ""
     dynamic var district = ""
     
+    
+    
     var courses = List<Course>()
     
     required convenience init?(map: Map) {

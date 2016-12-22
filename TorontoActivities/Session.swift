@@ -1,30 +1,23 @@
 //
-//  Course.swift
+//  Session.swift
 //  TorontoActivities
 //
-//  Created by Thomas Alexanian on 2016-12-22.
+//  Created by Hamza Lakhani on 2016-12-22.
 //  Copyright © 2016 Tomza. All rights reserved.
 //
-
-
 import UIKit
 import RealmSwift
 import ObjectMapper
 
-class Course: Object, Mappable  {
+class Session: Object, Mappable  {
     
     //Realm syntax
-    dynamic var courseID = ""
-    dynamic var courseName = ""
-    dynamic var ageMax = 0
-    dynamic var ageMin = 0
-    dynamic var ageGroup = ""
-    dynamic var programName = ""
-    dynamic var category = ""
+    dynamic var time = ""
+    dynamic var date = 0
 
     
-    var session = List<Session>()
-
+    
+    
     
     required convenience init?(map: Map) {
         self.init()
@@ -38,5 +31,4 @@ class Course: Object, Mappable  {
     }
     
 }
-
 
