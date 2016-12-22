@@ -13,7 +13,7 @@ class Session: Object, Mappable  {
     
     //Realm syntax
     dynamic var time = ""
-    dynamic var date = 0
+    dynamic var date = ""
 
     
     
@@ -24,8 +24,8 @@ class Session: Object, Mappable  {
     }
     
     func mapping(map: Map) {
-        courseID <- map["CourseID"]
-        courseName <- map["CourseName"]
+        time <- map["Time"]
+        date <- map["Date"]
         
         
     }

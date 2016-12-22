@@ -34,9 +34,16 @@ class Facility: Object, Mappable  {
     func mapping(map: Map) {
         accessibility <- map["Accessible"]
         address <- map["Address"]
-        courses <- (map["Courses"], RealmListTransform<Course>())
-        
+        latitude <- map["Latitude"]
+        longitude <- map["Longitude"]
+        name <- map["Name"]
+        phone <- map["Phone"]
+        postalCode <- map["PostalCode"]
+        district <- map["District"]
         locationID <- map["LocationID"]
+        
+        courses <- (map["Courses"], RealmListTransform<Course>())
+
         
     }
     
