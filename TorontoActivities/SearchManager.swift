@@ -101,12 +101,13 @@ class SearchManager {
             
             var tempFacility : Facility!
             
-            //Checking to see if object already exists in database
             
             
+            //If database is empty, create the facility, district and assosciate them
             if facilitiesCD.count < 1 {
                 tempFacility = createFacility(entity: facilityJSON)
                 insertDistrict(with: facilityJSON, and: tempFacility)
+                
             } else {
                 for facilityCD in facilitiesCD {
                     
