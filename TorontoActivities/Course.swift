@@ -23,7 +23,7 @@ class Course: Object, Mappable  {
     dynamic var category = ""
 
     
-    var session = List<Session>()
+    var sessions = List<Session>()
 
     
     required convenience init?(map: Map) {
@@ -33,8 +33,13 @@ class Course: Object, Mappable  {
     func mapping(map: Map) {
         courseID <- map["CourseID"]
         courseName <- map["CourseName"]
+        ageMax <- map["AgeMax"]
+        ageMin <- map["AgeMin"]
+        ageGroup <- map["AgeGroup"]
+        programName <- map ["ProgramName"]
+        category <- map["Category"]
         
-        
+        sessions <- (map["Sessions"], RealmListTransform<Session>())
     }
     
 }
