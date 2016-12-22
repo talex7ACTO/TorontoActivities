@@ -19,7 +19,6 @@ class FacilitiesViewController: UIViewController {
     
     //Properties
     var fetchedResultsController: NSFetchedResultsController<NSManagedObject>!
-    let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
 //    func initializeFetchedResultsController() {
 //        let request = NSFetchRequest<NSManagedObject>(entityName: "Facility")
@@ -39,8 +38,8 @@ class FacilitiesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let searchManager = SearchManager()
-        searchManager.getJson()
+        let searchManager = SearchManager2()
+        searchManager.getJSON()
         // Do any additional setup after loading the view.
     }
 
