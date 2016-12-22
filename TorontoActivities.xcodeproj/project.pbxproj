@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		74DCEADD1E0AD210005532D5 /* FacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DCEADC1E0AD210005532D5 /* FacilitiesViewController.swift */; };
+		74DCEB301E0C32F1005532D5 /* SearchManager2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DCEB2F1E0C32F1005532D5 /* SearchManager2.swift */; };
+		74DCEB321E0C393B005532D5 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DCEB311E0C393B005532D5 /* Course.swift */; };
+		74DCEB341E0C3BC7005532D5 /* ArrayTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DCEB331E0C3BC7005532D5 /* ArrayTransform.swift */; };
 		CAA347721E01DEA4009E49BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA347711E01DEA4009E49BC /* AppDelegate.swift */; };
 		CAA347771E01DEA4009E49BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA347751E01DEA4009E49BC /* Main.storyboard */; };
 		CAA347791E01DEA4009E49BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA347781E01DEA4009E49BC /* Assets.xcassets */; };
@@ -15,10 +18,11 @@
 		CAA347871E01DEA4009E49BC /* TorontoActivitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA347861E01DEA4009E49BC /* TorontoActivitiesTests.swift */; };
 		CAA347921E02F8DC009E49BC /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA347911E02F8DC009E49BC /* MasterViewController.swift */; };
 		CAA347941E02F8F2009E49BC /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA347931E02F8F2009E49BC /* DetailedViewController.swift */; };
-		CAA347961E030D8F009E49BC /* Facilites.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA347951E030D8F009E49BC /* Facilites.swift */; };
+		CAA347961E030D8F009E49BC /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA347951E030D8F009E49BC /* Facility.swift */; };
 		CAA347981E031A54009E49BC /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA347971E031A54009E49BC /* TableViewCell.swift */; };
 		CAA3479A1E08884A009E49BC /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA347991E08884A009E49BC /* SearchManager.swift */; };
-		CAA3479D1E088855009E49BC /* TorontoActivities.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CAA3479B1E088855009E49BC /* TorontoActivities.xcdatamodeld */; };
+		F5A660050B3A3374DF5EF0BB /* Pods_TorontoActivitiesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B33F7CB9C1E3665FAF2F8B0 /* Pods_TorontoActivitiesTests.framework */; };
+		FEE811FF2861AD860BD6B331 /* Pods_TorontoActivities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6588A860FB30B76E0110AD80 /* Pods_TorontoActivities.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +36,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0DB82DABDAB6AF2A4E50CC8D /* Pods-TorontoActivitiesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorontoActivitiesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TorontoActivitiesTests/Pods-TorontoActivitiesTests.release.xcconfig"; sourceTree = "<group>"; };
+		5B33F7CB9C1E3665FAF2F8B0 /* Pods_TorontoActivitiesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TorontoActivitiesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6588A860FB30B76E0110AD80 /* Pods_TorontoActivities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TorontoActivities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74DCEADC1E0AD210005532D5 /* FacilitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilitiesViewController.swift; sourceTree = "<group>"; };
+		74DCEB2F1E0C32F1005532D5 /* SearchManager2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManager2.swift; sourceTree = "<group>"; };
+		74DCEB311E0C393B005532D5 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		74DCEB331E0C3BC7005532D5 /* ArrayTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayTransform.swift; sourceTree = "<group>"; };
+		755CBF8FE00F86AE38A2D834 /* Pods-TorontoActivities.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorontoActivities.release.xcconfig"; path = "Pods/Target Support Files/Pods-TorontoActivities/Pods-TorontoActivities.release.xcconfig"; sourceTree = "<group>"; };
+		90C5FC1366DC449B715F8A63 /* Pods-TorontoActivitiesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorontoActivitiesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TorontoActivitiesTests/Pods-TorontoActivitiesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CA26C469697099B75A170364 /* Pods-TorontoActivities.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorontoActivities.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TorontoActivities/Pods-TorontoActivities.debug.xcconfig"; sourceTree = "<group>"; };
 		CAA3476E1E01DEA4009E49BC /* TorontoActivities.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TorontoActivities.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA347711E01DEA4009E49BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAA347761E01DEA4009E49BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -44,10 +57,9 @@
 		CAA347881E01DEA4009E49BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAA347911E02F8DC009E49BC /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		CAA347931E02F8F2009E49BC /* DetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
-		CAA347951E030D8F009E49BC /* Facilites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facilites.swift; sourceTree = "<group>"; };
+		CAA347951E030D8F009E49BC /* Facility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
 		CAA347971E031A54009E49BC /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		CAA347991E08884A009E49BC /* SearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
-		CAA3479C1E088855009E49BC /* TorontoActivities.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TorontoActivities.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEE811FF2861AD860BD6B331 /* Pods_TorontoActivities.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,18 +75,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5A660050B3A3374DF5EF0BB /* Pods_TorontoActivitiesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		98B872A9E6A326DEC33DD6A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6588A860FB30B76E0110AD80 /* Pods_TorontoActivities.framework */,
+				5B33F7CB9C1E3665FAF2F8B0 /* Pods_TorontoActivitiesTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CAA347651E01DEA3009E49BC = {
 			isa = PBXGroup;
 			children = (
 				CAA347701E01DEA4009E49BC /* TorontoActivities */,
 				CAA347851E01DEA4009E49BC /* TorontoActivitiesTests */,
 				CAA3476F1E01DEA4009E49BC /* Products */,
+				F60E575742F733681886CCEE /* Pods */,
+				98B872A9E6A326DEC33DD6A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,14 +118,16 @@
 				CAA347911E02F8DC009E49BC /* MasterViewController.swift */,
 				74DCEADC1E0AD210005532D5 /* FacilitiesViewController.swift */,
 				CAA347971E031A54009E49BC /* TableViewCell.swift */,
-				CAA347951E030D8F009E49BC /* Facilites.swift */,
+				CAA347951E030D8F009E49BC /* Facility.swift */,
 				CAA347931E02F8F2009E49BC /* DetailedViewController.swift */,
 				CAA347751E01DEA4009E49BC /* Main.storyboard */,
 				CAA347991E08884A009E49BC /* SearchManager.swift */,
 				CAA347781E01DEA4009E49BC /* Assets.xcassets */,
 				CAA3477A1E01DEA4009E49BC /* LaunchScreen.storyboard */,
-				CAA3479B1E088855009E49BC /* TorontoActivities.xcdatamodeld */,
+				74DCEB311E0C393B005532D5 /* Course.swift */,
 				CAA3477D1E01DEA4009E49BC /* Info.plist */,
+				74DCEB2F1E0C32F1005532D5 /* SearchManager2.swift */,
+				74DCEB331E0C3BC7005532D5 /* ArrayTransform.swift */,
 			);
 			path = TorontoActivities;
 			sourceTree = "<group>";
@@ -114,6 +141,17 @@
 			path = TorontoActivitiesTests;
 			sourceTree = "<group>";
 		};
+		F60E575742F733681886CCEE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CA26C469697099B75A170364 /* Pods-TorontoActivities.debug.xcconfig */,
+				755CBF8FE00F86AE38A2D834 /* Pods-TorontoActivities.release.xcconfig */,
+				90C5FC1366DC449B715F8A63 /* Pods-TorontoActivitiesTests.debug.xcconfig */,
+				0DB82DABDAB6AF2A4E50CC8D /* Pods-TorontoActivitiesTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,9 +159,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAA3478B1E01DEA4009E49BC /* Build configuration list for PBXNativeTarget "TorontoActivities" */;
 			buildPhases = (
+				3C8260182DE367AC4D0D77DA /* [CP] Check Pods Manifest.lock */,
 				CAA3476A1E01DEA3009E49BC /* Sources */,
 				CAA3476B1E01DEA3009E49BC /* Frameworks */,
 				CAA3476C1E01DEA3009E49BC /* Resources */,
+				98A2A9A40B927701F79857B4 /* [CP] Embed Pods Frameworks */,
+				2332C75964E955B3C73F62B1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -218,7 +259,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2332C75964E955B3C73F62B1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TorontoActivities/Pods-TorontoActivities-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2AB40C2220282110E1C1076B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3C8260182DE367AC4D0D77DA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -248,6 +319,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TorontoActivitiesTests/Pods-TorontoActivitiesTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		98A2A9A40B927701F79857B4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TorontoActivities/Pods-TorontoActivities-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E6813DC2DB1D6B8A1BC7944D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -270,13 +356,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74DCEB321E0C393B005532D5 /* Course.swift in Sources */,
 				CAA347981E031A54009E49BC /* TableViewCell.swift in Sources */,
+				74DCEB301E0C32F1005532D5 /* SearchManager2.swift in Sources */,
 				CAA347921E02F8DC009E49BC /* MasterViewController.swift in Sources */,
-				CAA3479D1E088855009E49BC /* TorontoActivities.xcdatamodeld in Sources */,
 				CAA347721E01DEA4009E49BC /* AppDelegate.swift in Sources */,
 				CAA3479A1E08884A009E49BC /* SearchManager.swift in Sources */,
 				74DCEADD1E0AD210005532D5 /* FacilitiesViewController.swift in Sources */,
-				CAA347961E030D8F009E49BC /* Facilites.swift in Sources */,
+				CAA347961E030D8F009E49BC /* Facility.swift in Sources */,
+				74DCEB341E0C3BC7005532D5 /* ArrayTransform.swift in Sources */,
 				CAA347941E02F8F2009E49BC /* DetailedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +500,7 @@
 		};
 		CAA3478C1E01DEA4009E49BC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA26C469697099B75A170364 /* Pods-TorontoActivities.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = E44M545Q67;
@@ -425,6 +514,7 @@
 		};
 		CAA3478D1E01DEA4009E49BC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 755CBF8FE00F86AE38A2D834 /* Pods-TorontoActivities.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = E44M545Q67;
@@ -438,6 +528,7 @@
 		};
 		CAA3478F1E01DEA4009E49BC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90C5FC1366DC449B715F8A63 /* Pods-TorontoActivitiesTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -453,6 +544,7 @@
 		};
 		CAA347901E01DEA4009E49BC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DB82DABDAB6AF2A4E50CC8D /* Pods-TorontoActivitiesTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -497,19 +589,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		CAA3479B1E088855009E49BC /* TorontoActivities.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				CAA3479C1E088855009E49BC /* TorontoActivities.xcdatamodel */,
-			);
-			currentVersion = CAA3479C1E088855009E49BC /* TorontoActivities.xcdatamodel */;
-			path = TorontoActivities.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = CAA347661E01DEA3009E49BC /* Project object */;
 }
