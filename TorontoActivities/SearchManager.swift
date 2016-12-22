@@ -92,6 +92,27 @@ class SearchManager {
         facility.district = newDistrict
     }
     
+    func insertCourse(with courseJSON:[String:Any], and course:Course) {
+        let newCourse = NSEntityDescription.insertNewObject(forEntityName: "Course", into: self.moc) as! Course
+        newCourse.courseID = courseJSON["Course"] as? String
+        course = newCourse
+    
+    }
+    
+    func insertAge(with courseJSON:[String:Any], and age:Age) {
+        let newAge = NSEntityDescription.insertNewObject(forEntityName: "Age", into: self.moc) as! Age
+        newAge.ageGroup = courseJSON["Course"] as? String
+        //course.age = newAge
+    }
+    
+    func insertSession(with sessionJSON:[String:Any], and session:Session) {
+        let newSession = NSEntityDescription.insertNewObject(forEntityName: "Session", into: self.moc) as! Session
+        if(newSession.date && newSession.time){
+            sessionJSON["Sesssion"] as? String
+       // course. = newCourse
+        }
+    }
+    
     func dataParse(array arrayOfFacilities: [[String: Any]]) {
         
         let facilitiesCD = fetchFacilities()
