@@ -211,7 +211,7 @@
 				TargetAttributes = {
 					CAA3476D1E01DEA3009E49BC = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = E44M545Q67;
+						DevelopmentTeam = 4BHA7KMB9T;
 						ProvisioningStyle = Automatic;
 					};
 					CAA347811E01DEA4009E49BC = {
@@ -507,10 +507,10 @@
 			baseConfigurationReference = CA26C469697099B75A170364 /* Pods-TorontoActivities.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = E44M545Q67;
+				DEVELOPMENT_TEAM = 4BHA7KMB9T;
 				INFOPLIST_FILE = TorontoActivities/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ta.TorontoActivities;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hamzalakhani.TorontoActivities;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -521,10 +521,10 @@
 			baseConfigurationReference = 755CBF8FE00F86AE38A2D834 /* Pods-TorontoActivities.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = E44M545Q67;
+				DEVELOPMENT_TEAM = 4BHA7KMB9T;
 				INFOPLIST_FILE = TorontoActivities/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ta.TorontoActivities;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hamzalakhani.TorontoActivities;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

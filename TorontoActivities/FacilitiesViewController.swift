@@ -8,38 +8,33 @@
 
 import UIKit
 import CoreData
+import RealmSwift
 
-class FacilitiesViewController: UIViewController {
-//NSFetchedResultsControllerDelegate, UITableViewDataSource {
-
-  
+class FacilitiesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    //! makes it say its def there
+    var fetchedFacility: Results<Facility>!
+    
+    var shouldShowSearchResults = false
+    let searchController = UISearchController(searchResultsController: nil)
+
     @IBOutlet var tableView: UITableView!
     
     
-    //Properties
-    var fetchedResultsController: NSFetchedResultsController<NSManagedObject>!
-    
-//    func initializeFetchedResultsController() {
-//        let request = NSFetchRequest<NSManagedObject>(entityName: "Facility")
-//       // let districtSort = NSSortDescriptor(key: "district", ascending: true)
-//        let nameSort = NSSortDescriptor(key: "name", ascending: true)
-//        request.sortDescriptors = [nameSort]
-//        
-//        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: self.moc, sectionNameKeyPath: "district", cacheName: "rootCache")
-//        fetchedResultsController.delegate = self
-//        
-//        do {
-//            try fetchedResultsController.performFetch()
-//        } catch {
-//            fatalError("Failed to initialize FetchedResultsController: \(error)")
-//        }
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         let searchManager = SearchManager2()
         searchManager.getJSON()
+        
+        
+        
+        let realm = try! Realm()
+        fetchedFacility = realm.objects(Facility.self)
+        
+        
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -48,34 +43,31 @@ class FacilitiesViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-//    //UITableViewData Source Methods
-//    
-//    func configureCell(cell: TableViewCell, indexPath: IndexPath) {
-//        guard let selectedObject = fetchedResultsController.object(at: indexPath) as? Facility else { fatalError("Unexpected Object in FetchedResultsController") }
-//        // Populate cell from the NSManagedObject instance
+    //UITableViewData Source Methods
+    
+    func configureCell(cell: TableViewCell, indexPath: IndexPath) {
 //        cell.nameLabel.text = selectedObject.name
 //        cell.nameLocation.text = selectedObject.address
-//        
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
-//        // Set up the cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
+        // Set up the cell
 //        configureCell(cell: cell, indexPath: indexPath)
-//        return cell
-//    }
-//    
-//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return fetchedResultsController.sections!.count
-//    }
-//    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard let sections = fetchedResultsController.sections else {
-//            fatalError("No sections in fetchedResultsController")
-//        }
-//        let sectionInfo = sections[section]
-//        return sectionInfo.numberOfObjects
-//    }
+        cell.nameLabel.text = fetchedFacility[indexPath.row].name
+        cell.nameLocation.text = fetchedFacility[indexPath.row].address
+
+        return cell
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+        return fetchedFacility.count
+    }
 
     
     
