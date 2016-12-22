@@ -4,7 +4,7 @@
         <attribute name="ageGroup" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ageMax" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="ageMin" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="courses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="ageRange" inverseEntity="Course" syncable="YES"/>
+        <relationship name="courses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="age" inverseEntity="Course" syncable="YES"/>
     </entity>
     <entity name="Course" representedClassName="Course" syncable="YES" codeGenerationType="class">
         <attribute name="ageMax" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -12,8 +12,7 @@
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="courseID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="courseName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="ageRange" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Age" inverseName="courses" inverseEntity="Age" syncable="YES"/>
-        <relationship name="courses" optional="YES" maxCount="1" deletionRule="Nullify" syncable="YES"/>
+        <relationship name="age" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Age" inverseName="courses" inverseEntity="Age" syncable="YES"/>
         <relationship name="facility" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Facility" inverseName="courses" inverseEntity="Facility" syncable="YES"/>
         <relationship name="programName" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProgramName" inverseName="courses" inverseEntity="ProgramName" syncable="YES"/>
         <relationship name="sessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Session" inverseName="course" inverseEntity="Session" syncable="YES"/>
@@ -50,12 +49,12 @@
         <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="sessions" inverseEntity="Course" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Course" positionX="234" positionY="144" width="128" height="193"/>
+        <element name="Course" positionX="268" positionY="164" width="128" height="178"/>
         <element name="Facility" positionX="-74" positionY="162" width="128" height="208"/>
         <element name="Session" positionX="277" positionY="443" width="128" height="88"/>
         <element name="District" positionX="-81" positionY="27" width="128" height="73"/>
         <element name="ProgramName" positionX="-0" positionY="423" width="128" height="75"/>
-        <element name="Location" positionX="-225" positionY="387" width="128" height="88"/>
-        <element name="Age" positionX="72" positionY="144" width="128" height="103"/>
+        <element name="Location" positionX="-164" positionY="434" width="128" height="88"/>
+        <element name="Age" positionX="81" positionY="189" width="128" height="105"/>
     </elements>
 </model>

@@ -9,7 +9,8 @@
 import UIKit
 import CoreData
 
-class FacilitiesViewController: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDataSource {
+class FacilitiesViewController: UIViewController {
+//NSFetchedResultsControllerDelegate, UITableViewDataSource {
 
   
     
@@ -20,25 +21,26 @@ class FacilitiesViewController: UIViewController, NSFetchedResultsControllerDele
     var fetchedResultsController: NSFetchedResultsController<NSManagedObject>!
     let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    func initializeFetchedResultsController() {
-        let request = NSFetchRequest<NSManagedObject>(entityName: "Facility")
-       // let districtSort = NSSortDescriptor(key: "district", ascending: true)
-        let nameSort = NSSortDescriptor(key: "name", ascending: true)
-        request.sortDescriptors = [nameSort]
-        
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: self.moc, sectionNameKeyPath: "district", cacheName: "rootCache")
-        fetchedResultsController.delegate = self
-        
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            fatalError("Failed to initialize FetchedResultsController: \(error)")
-        }
-    }
+//    func initializeFetchedResultsController() {
+//        let request = NSFetchRequest<NSManagedObject>(entityName: "Facility")
+//       // let districtSort = NSSortDescriptor(key: "district", ascending: true)
+//        let nameSort = NSSortDescriptor(key: "name", ascending: true)
+//        request.sortDescriptors = [nameSort]
+//        
+//        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: self.moc, sectionNameKeyPath: "district", cacheName: "rootCache")
+//        fetchedResultsController.delegate = self
+//        
+//        do {
+//            try fetchedResultsController.performFetch()
+//        } catch {
+//            fatalError("Failed to initialize FetchedResultsController: \(error)")
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let searchManager = SearchManager()
+        searchManager.getJson()
         // Do any additional setup after loading the view.
     }
 
@@ -47,34 +49,34 @@ class FacilitiesViewController: UIViewController, NSFetchedResultsControllerDele
         // Dispose of any resources that can be recreated.
     }
     
-    //UITableViewData Source Methods
-    
-    func configureCell(cell: TableViewCell, indexPath: IndexPath) {
-        guard let selectedObject = fetchedResultsController.object(at: indexPath) as? Facility else { fatalError("Unexpected Object in FetchedResultsController") }
-        // Populate cell from the NSManagedObject instance
-        cell.nameLabel.text = selectedObject.name
-        cell.nameLocation.text = selectedObject.address
-        
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
-        // Set up the cell
-        configureCell(cell: cell, indexPath: indexPath)
-        return cell
-    }
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return fetchedResultsController.sections!.count
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sections = fetchedResultsController.sections else {
-            fatalError("No sections in fetchedResultsController")
-        }
-        let sectionInfo = sections[section]
-        return sectionInfo.numberOfObjects
-    }
+//    //UITableViewData Source Methods
+//    
+//    func configureCell(cell: TableViewCell, indexPath: IndexPath) {
+//        guard let selectedObject = fetchedResultsController.object(at: indexPath) as? Facility else { fatalError("Unexpected Object in FetchedResultsController") }
+//        // Populate cell from the NSManagedObject instance
+//        cell.nameLabel.text = selectedObject.name
+//        cell.nameLocation.text = selectedObject.address
+//        
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
+//        // Set up the cell
+//        configureCell(cell: cell, indexPath: indexPath)
+//        return cell
+//    }
+//    
+//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        return fetchedResultsController.sections!.count
+//    }
+//    
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        guard let sections = fetchedResultsController.sections else {
+//            fatalError("No sections in fetchedResultsController")
+//        }
+//        let sectionInfo = sections[section]
+//        return sectionInfo.numberOfObjects
+//    }
 
     
     
