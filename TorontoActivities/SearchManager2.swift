@@ -18,8 +18,7 @@ class SearchManager2: NSObject {
             guard let facilities = response.result.value else { return }
             let realm = try! Realm()
             try! realm.write {
-                realm.add(facilities)
-            }
+                realm.add(facilities, update: true)            }
             
             let facilitiesMatch = realm.objects(Facility.self).filter("ANY courses.courseID == '4817569'")
             print(facilitiesMatch)

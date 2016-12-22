@@ -23,7 +23,9 @@ class Facility: Object, Mappable  {
     dynamic var postalCode = ""
     dynamic var district = ""
     
-    
+    override class func primaryKey() -> String{
+        return "locationID"
+    }
     
     var courses = List<Course>()
     
