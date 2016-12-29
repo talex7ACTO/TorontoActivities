@@ -14,14 +14,15 @@ import AlamofireObjectMapper
 class SearchManager2: NSObject {
     
     func getJSON() {
-        Alamofire.request("https://www1.toronto.ca/parks/assets/xml/dropinweek1.json", method: .get).responseArray { (response: DataResponse<[Facility]>) in
-            guard let facilities = response.result.value else { return }
-            let realm = try! Realm()
-            try! realm.write {
-                realm.add(facilities, update: true)            }
+        for i in 1...4 {
+            Alamofire.request("https://www1.toronto.ca/parks/assets/xml/dropinweek\(i).json", method: .get).responseArray { (response: DataResponse<[Facility]>) in
+                guard let facilities = response.result.value else { return }
+                let realm = try! Realm()
+                try! realm.write {
+                    realm.add(facilities, update: true)            }
             
-            let facilitiesMatch = realm.objects(Facility.self).filter("ANY courses.courseID == '4817569'")
-            print(facilitiesMatch)
+            }
+            
         }
     }
 }

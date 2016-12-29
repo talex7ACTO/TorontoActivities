@@ -38,7 +38,7 @@ class Facility: Object, Mappable  {
         address <- map["Address"]
         latitude <- map["Latitude"]
         longitude <- map["Longitude"]
-        name <- map["Name"]
+        name <- map["LocationName"]
         phone <- map["Phone"]
         postalCode <- map["PostalCode"]
         district <- map["District"]

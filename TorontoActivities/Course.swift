@@ -21,6 +21,7 @@ class Course: Object, Mappable  {
     dynamic var ageGroup = ""
     dynamic var programName = ""
     dynamic var category = ""
+    let facility = LinkingObjects(fromType: Facility.self, property: "courses")
 
     
     var sessions = List<Session>()

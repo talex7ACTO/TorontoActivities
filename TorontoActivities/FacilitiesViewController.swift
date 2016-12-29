@@ -23,15 +23,19 @@ class FacilitiesViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //pulling data from net to update database
         let searchManager = SearchManager2()
         searchManager.getJSON()
         
-        
-        
+        //fetching all facilities from database
         let realm = try! Realm()
         fetchedFacility = realm.objects(Facility.self)
+        tableView.reloadData()
         
+        let coursesMatch = realm.objects(Course.self).filter("ANY facility.locationID == '1053'")
+        print(coursesMatch.count)
+        print(coursesMatch)
         
         
         
@@ -62,7 +66,8 @@ class FacilitiesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1    }
+        return 1
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 

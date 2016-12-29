@@ -14,10 +14,14 @@ class Session: Object, Mappable  {
     //Realm syntax
     dynamic var time = ""
     dynamic var date = ""
+    
 
+//    override class func primaryKey() -> String{
+//        return "uniqueKey"
+//    }
     
-    
-    
+    let course = LinkingObjects(fromType: Course.self, property: "sessions")
+
     
     required convenience init?(map: Map) {
         self.init()
@@ -26,7 +30,6 @@ class Session: Object, Mappable  {
     func mapping(map: Map) {
         time <- map["Time"]
         date <- map["Date"]
-        
         
     }
     
