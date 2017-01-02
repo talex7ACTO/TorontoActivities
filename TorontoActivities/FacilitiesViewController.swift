@@ -14,6 +14,7 @@ class FacilitiesViewController: UIViewController, UITableViewDataSource, UITable
     
     //! makes it say its def there
     var fetchedFacility: Results<Facility>!
+    var filteredFacility: Results<Facility>!
     
     var shouldShowSearchResults = false
     let searchController = UISearchController(searchResultsController: nil)
@@ -24,6 +25,14 @@ class FacilitiesViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        definesPresentationContext = true
+        searchController.dimsBackgroundDuringPresentation = false
+        tableView.tableHeaderView = searchController.searchBar
+
+
         //pulling data from net to update database
         let searchManager = SearchManager2()
         searchManager.getJSON()
@@ -41,10 +50,12 @@ class FacilitiesViewController: UIViewController, UITableViewDataSource, UITable
         
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    //filtering for the search
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredFacility = fetchedFacility.filter ({( facility : Facility) -> Bool in
+            return facility.name.lowercased().contains(searchText.lowercased())
+        })
+        tableView.reloadData()
     }
     
     //UITableViewData Source Methods
@@ -88,3 +99,19 @@ class FacilitiesViewController: UIViewController, UITableViewDataSource, UITable
     */
 
 }
+
+extension FacilitiesViewController: UISearchBarDelegate {
+    // MARK: - UISearchBar Delegate
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+}
+
+extension FacilitiesViewController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+
+    }
+}
+
