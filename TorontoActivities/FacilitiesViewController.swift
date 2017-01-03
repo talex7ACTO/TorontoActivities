@@ -49,18 +49,22 @@ class FacilitiesViewController: UIViewController, UITableViewDataSource, UITable
     
     //UITableViewData Source Methods
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
     func configureCell(cell: TableViewCell, indexPath: IndexPath) {
-//        cell.nameLabel.text = selectedObject.name
-//        cell.nameLocation.text = selectedObject.address
+        cell.nameLabel.text = fetchedFacility[indexPath.row].name
+        cell.nameLocation.text = fetchedFacility[indexPath.row].address
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
         // Set up the cell
-//        configureCell(cell: cell, indexPath: indexPath)
-        cell.nameLabel.text = fetchedFacility[indexPath.row].name
-        cell.nameLocation.text = fetchedFacility[indexPath.row].address
+        configureCell(cell: cell, indexPath: indexPath)
+//        cell.nameLabel.text = fetchedFacility[indexPath.row].name
+//        cell.nameLocation.text = fetchedFacility[indexPath.row].address
 
         return cell
     }
@@ -74,7 +78,12 @@ class FacilitiesViewController: UIViewController, UITableViewDataSource, UITable
         return fetchedFacility.count
     }
 
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailedSegue" {
+        let detailedVC = DetailedViewController()
+            detailedVC.nameLabel.text =  
+    }
+    }
     
 
     /*

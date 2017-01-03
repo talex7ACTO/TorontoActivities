@@ -9,7 +9,13 @@
 import UIKit
 
 class DetailedViewController: UIViewController {
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var phoneNoLabel: UILabel!
 
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
