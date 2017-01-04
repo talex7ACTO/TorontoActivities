@@ -11,6 +11,7 @@
 		74DCEB301E0C32F1005532D5 /* SearchManager2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DCEB2F1E0C32F1005532D5 /* SearchManager2.swift */; };
 		74DCEB321E0C393B005532D5 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DCEB311E0C393B005532D5 /* Course.swift */; };
 		74DCEB341E0C3BC7005532D5 /* ArrayTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DCEB331E0C3BC7005532D5 /* ArrayTransform.swift */; };
+		74F98AD11E1D7461008F87C6 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F98AD01E1D7461008F87C6 /* Annotation.swift */; };
 		CA17D02A1E0C449C00E770EE /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17D0291E0C449C00E770EE /* Session.swift */; };
 		CAA347721E01DEA4009E49BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA347711E01DEA4009E49BC /* AppDelegate.swift */; };
 		CAA347771E01DEA4009E49BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA347751E01DEA4009E49BC /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		74DCEB2F1E0C32F1005532D5 /* SearchManager2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManager2.swift; sourceTree = "<group>"; };
 		74DCEB311E0C393B005532D5 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		74DCEB331E0C3BC7005532D5 /* ArrayTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayTransform.swift; sourceTree = "<group>"; };
+		74F98AD01E1D7461008F87C6 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		755CBF8FE00F86AE38A2D834 /* Pods-TorontoActivities.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorontoActivities.release.xcconfig"; path = "Pods/Target Support Files/Pods-TorontoActivities/Pods-TorontoActivities.release.xcconfig"; sourceTree = "<group>"; };
 		90C5FC1366DC449B715F8A63 /* Pods-TorontoActivitiesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TorontoActivitiesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TorontoActivitiesTests/Pods-TorontoActivitiesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA17D0291E0C449C00E770EE /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				CAA3477D1E01DEA4009E49BC /* Info.plist */,
 				74DCEB2F1E0C32F1005532D5 /* SearchManager2.swift */,
 				74DCEB331E0C3BC7005532D5 /* ArrayTransform.swift */,
+				74F98AD01E1D7461008F87C6 /* Annotation.swift */,
 			);
 			path = TorontoActivities;
 			sourceTree = "<group>";
@@ -211,7 +214,6 @@
 				TargetAttributes = {
 					CAA3476D1E01DEA3009E49BC = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 4BHA7KMB9T;
 						ProvisioningStyle = Automatic;
 					};
 					CAA347811E01DEA4009E49BC = {
@@ -361,6 +363,7 @@
 			files = (
 				74DCEB321E0C393B005532D5 /* Course.swift in Sources */,
 				CAA347981E031A54009E49BC /* TableViewCell.swift in Sources */,
+				74F98AD11E1D7461008F87C6 /* Annotation.swift in Sources */,
 				74DCEB301E0C32F1005532D5 /* SearchManager2.swift in Sources */,
 				CAA347921E02F8DC009E49BC /* MasterViewController.swift in Sources */,
 				CAA347721E01DEA4009E49BC /* AppDelegate.swift in Sources */,
@@ -507,7 +510,7 @@
 			baseConfigurationReference = CA26C469697099B75A170364 /* Pods-TorontoActivities.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4BHA7KMB9T;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TorontoActivities/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hamzalakhani.TorontoActivities;
@@ -521,7 +524,7 @@
 			baseConfigurationReference = 755CBF8FE00F86AE38A2D834 /* Pods-TorontoActivities.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4BHA7KMB9T;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TorontoActivities/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hamzalakhani.TorontoActivities;

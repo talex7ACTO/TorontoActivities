@@ -26,11 +26,11 @@ class FacilitiesViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         
         
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
-        definesPresentationContext = true
-        searchController.dimsBackgroundDuringPresentation = false
-        tableView.tableHeaderView = searchController.searchBar
+//        searchController.searchResultsUpdater = self
+//        searchController.searchBar.delegate = self
+//        definesPresentationContext = true
+//        searchController.dimsBackgroundDuringPresentation = false
+//        tableView.tableHeaderView = searchController.searchBar
 
 
         //pulling data from net to update database
@@ -51,32 +51,29 @@ class FacilitiesViewController: UIViewController, UITableViewDataSource, UITable
         // Do any additional setup after loading the view.
     }
     //filtering for the search
-    func filterContentForSearchText(searchText: String, scope: String = "All") {
-        filteredFacility = fetchedFacility.filter ({( facility : Facility) -> Bool in
-            return facility.name.lowercased().contains(searchText.lowercased())
-        })
-        tableView.reloadData()
-    }
+//    func filterContentForSearchText(searchText: String, scope: String = "All") {
+//        filteredFacility = fetchedFacility.filter ({( facility : Facility) -> Bool in
+//            return facility.name.lowercased().contains(searchText.lowercased())
+//        })
+//        tableView.reloadData()
+//    }
     
     //UITableViewData Source Methods
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
+
     
     func configureCell(cell: TableViewCell, indexPath: IndexPath) {
+        
         cell.nameLabel.text = fetchedFacility[indexPath.row].name
-        cell.nameLocation.text = fetchedFacility[indexPath.row].address
+        cell.locationLabel.text = fetchedFacility[indexPath.row].address
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
+        
         // Set up the cell
         configureCell(cell: cell, indexPath: indexPath)
-//        cell.nameLabel.text = fetchedFacility[indexPath.row].name
-//        cell.nameLocation.text = fetchedFacility[indexPath.row].address
-
         return cell
     }
     
@@ -91,9 +88,14 @@ class FacilitiesViewController: UIViewController, UITableViewDataSource, UITable
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailedSegue" {
-        let detailedVC = DetailedViewController()
-            detailedVC.nameLabel.text =  
+            let detailedVC = segue.destination as! DetailedViewController
+            let indexPath = tableView.indexPathForSelectedRow!
+            detailedVC.selectedFacility = fetchedFacility[indexPath.row]
+        }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "detailedSegue", sender: self)
     }
     
 
@@ -109,18 +111,18 @@ class FacilitiesViewController: UIViewController, UITableViewDataSource, UITable
 
 }
 
-extension FacilitiesViewController: UISearchBarDelegate {
-    // MARK: - UISearchBar Delegate
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        filterContentForSearchText(searchText: searchController.searchBar.text!)
-    }
-}
-
-extension FacilitiesViewController: UISearchResultsUpdating {
-    // MARK: - UISearchResultsUpdating Delegate
-    func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchText: searchController.searchBar.text!)
-
-    }
-}
+//extension FacilitiesViewController: UISearchBarDelegate {
+//    // MARK: - UISearchBar Delegate
+//    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+//        filterContentForSearchText(searchText: searchController.searchBar.text!)
+//    }
+//}
+//
+//extension FacilitiesViewController: UISearchResultsUpdating {
+//    // MARK: - UISearchResultsUpdating Delegate
+//    func updateSearchResults(for searchController: UISearchController) {
+//        filterContentForSearchText(searchText: searchController.searchBar.text!)
+//
+//    }
+//}
 

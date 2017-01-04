@@ -12,7 +12,7 @@ class TableViewCell: UITableViewCell {
     // MARK: properties
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var nameLocation: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
     
 
     override func awakeFromNib() {

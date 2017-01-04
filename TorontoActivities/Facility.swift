@@ -9,19 +9,35 @@
 import UIKit
 import RealmSwift
 import ObjectMapper
+import MapKit
 
 class Facility: Object, Mappable  {
     
     //Realm syntax
     dynamic var accessibility = ""
     dynamic var address = ""
-    dynamic var latitude = 0.00
-    dynamic var longitude = 0.00
+    dynamic var latitude = ""
+    dynamic var longitude = ""
     dynamic var locationID = ""
     dynamic var name = ""
     dynamic var phone = ""
     dynamic var postalCode = ""
     dynamic var district = ""
+    
+//    var coordinate : CLLocationCoordinate2D
+//    var title : String?
+//    var subtitle : String?
+    
+//    let transform = TransformOf<Double, String>(fromJSON: { (value: String?) -> Double? in
+//        // transform value from String? to Double?
+//        return Double(value!)
+//    }, toJSON: { (value: Double?) -> String? in
+//        // transform value from Double? to String?
+//        if let value = value {
+//            return String(value)
+//        }
+//        return nil
+//    })
     
     override class func primaryKey() -> String{
         return "locationID"
@@ -36,6 +52,8 @@ class Facility: Object, Mappable  {
     func mapping(map: Map) {
         accessibility <- map["Accessible"]
         address <- map["Address"]
+//        latitude <- (map["Latitude"], transform)
+//        longitude <- (map["Longitude"], transform)
         latitude <- map["Latitude"]
         longitude <- map["Longitude"]
         name <- map["LocationName"]
