@@ -23,6 +23,11 @@
 		CAA347961E030D8F009E49BC /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA347951E030D8F009E49BC /* Facility.swift */; };
 		CAA347981E031A54009E49BC /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA347971E031A54009E49BC /* TableViewCell.swift */; };
 		CAA3479A1E08884A009E49BC /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA347991E08884A009E49BC /* SearchManager.swift */; };
+		CADBE6461E1D7E1400B469D2 /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADBE6451E1D7E1400B469D2 /* CoursesViewController.swift */; };
+		CADBE6481E1D868100B469D2 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADBE6471E1D868100B469D2 /* FilterViewController.swift */; };
+		CAE03C601E1D8A8200A552B9 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE03C5F1E1D8A8200A552B9 /* PageViewController.swift */; };
+		CAE03C621E1D961500A552B9 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE03C611E1D961500A552B9 /* Filter.swift */; };
+		CAE03C641E1D9DA700A552B9 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE03C631E1D9DA700A552B9 /* FilterTableViewCell.swift */; };
 		F5A660050B3A3374DF5EF0BB /* Pods_TorontoActivitiesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B33F7CB9C1E3665FAF2F8B0 /* Pods_TorontoActivitiesTests.framework */; };
 		FEE811FF2861AD860BD6B331 /* Pods_TorontoActivities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6588A860FB30B76E0110AD80 /* Pods_TorontoActivities.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +69,11 @@
 		CAA347951E030D8F009E49BC /* Facility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
 		CAA347971E031A54009E49BC /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		CAA347991E08884A009E49BC /* SearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		CADBE6451E1D7E1400B469D2 /* CoursesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
+		CADBE6471E1D868100B469D2 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		CAE03C5F1E1D8A8200A552B9 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		CAE03C611E1D961500A552B9 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		CAE03C631E1D9DA700A552B9 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +134,11 @@
 				CAA347971E031A54009E49BC /* TableViewCell.swift */,
 				CAA347951E030D8F009E49BC /* Facility.swift */,
 				CAA347931E02F8F2009E49BC /* DetailedViewController.swift */,
+				CADBE6451E1D7E1400B469D2 /* CoursesViewController.swift */,
+				CADBE6471E1D868100B469D2 /* FilterViewController.swift */,
+				CAE03C5F1E1D8A8200A552B9 /* PageViewController.swift */,
 				CAA347751E01DEA4009E49BC /* Main.storyboard */,
+				CAE03C631E1D9DA700A552B9 /* FilterTableViewCell.swift */,
 				CAA347991E08884A009E49BC /* SearchManager.swift */,
 				CAA347781E01DEA4009E49BC /* Assets.xcassets */,
 				CAA3477A1E01DEA4009E49BC /* LaunchScreen.storyboard */,
@@ -134,6 +148,7 @@
 				74DCEB2F1E0C32F1005532D5 /* SearchManager2.swift */,
 				74DCEB331E0C3BC7005532D5 /* ArrayTransform.swift */,
 				74F98AD01E1D7461008F87C6 /* Annotation.swift */,
+				CAE03C611E1D961500A552B9 /* Filter.swift */,
 			);
 			path = TorontoActivities;
 			sourceTree = "<group>";
@@ -214,6 +229,7 @@
 				TargetAttributes = {
 					CAA3476D1E01DEA3009E49BC = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 4BHA7KMB9T;
 						ProvisioningStyle = Automatic;
 					};
 					CAA347811E01DEA4009E49BC = {
@@ -361,16 +377,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CADBE6481E1D868100B469D2 /* FilterViewController.swift in Sources */,
 				74DCEB321E0C393B005532D5 /* Course.swift in Sources */,
 				CAA347981E031A54009E49BC /* TableViewCell.swift in Sources */,
 				74F98AD11E1D7461008F87C6 /* Annotation.swift in Sources */,
+				CADBE6461E1D7E1400B469D2 /* CoursesViewController.swift in Sources */,
 				74DCEB301E0C32F1005532D5 /* SearchManager2.swift in Sources */,
+				CAE03C601E1D8A8200A552B9 /* PageViewController.swift in Sources */,
 				CAA347921E02F8DC009E49BC /* MasterViewController.swift in Sources */,
 				CAA347721E01DEA4009E49BC /* AppDelegate.swift in Sources */,
 				CAA3479A1E08884A009E49BC /* SearchManager.swift in Sources */,
 				74DCEADD1E0AD210005532D5 /* FacilitiesViewController.swift in Sources */,
 				CA17D02A1E0C449C00E770EE /* Session.swift in Sources */,
 				CAA347961E030D8F009E49BC /* Facility.swift in Sources */,
+				CAE03C621E1D961500A552B9 /* Filter.swift in Sources */,
+				CAE03C641E1D9DA700A552B9 /* FilterTableViewCell.swift in Sources */,
 				74DCEB341E0C3BC7005532D5 /* ArrayTransform.swift in Sources */,
 				CAA347941E02F8F2009E49BC /* DetailedViewController.swift in Sources */,
 			);
@@ -510,8 +531,9 @@
 			baseConfigurationReference = CA26C469697099B75A170364 /* Pods-TorontoActivities.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4BHA7KMB9T;
 				INFOPLIST_FILE = TorontoActivities/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hamzalakhani.TorontoActivities;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -524,8 +546,9 @@
 			baseConfigurationReference = 755CBF8FE00F86AE38A2D834 /* Pods-TorontoActivities.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4BHA7KMB9T;
 				INFOPLIST_FILE = TorontoActivities/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hamzalakhani.TorontoActivities;
 				PRODUCT_NAME = "$(TARGET_NAME)";

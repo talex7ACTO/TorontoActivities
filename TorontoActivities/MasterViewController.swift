@@ -2,7 +2,7 @@
 ////  MasterViewController.swift
 ////  TorontoActivities
 ////
-////  Created by Tomza on 2016-12-15.
+////  Created by Hamza Lakhani on 2016-12-15.
 ////  Copyright © 2016 Tomza. All rights reserved.
 ////
 //

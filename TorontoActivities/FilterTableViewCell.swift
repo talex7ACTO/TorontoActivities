@@ -1,20 +1,16 @@
 //
-//  TableViewCell.swift
+//  FilterTableViewCell.swift
 //  TorontoActivities
 //
-//  Created by Hamza Lakhani on 2016-12-15.
-//  Copyright © 2016 Tomza. All rights reserved.
+//  Created by Hamza Lakhani on 2017-01-04.
+//  Copyright © 2017 Tomza. All rights reserved.
 //
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
-    // MARK: properties
-    
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
-    
+class FilterTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var filterName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
