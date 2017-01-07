@@ -15,7 +15,6 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
 
     //MARK: Properties
     
-    var fetchedCourses: Results<Course>!
     var filters = [Filter]()
 
 

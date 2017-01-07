@@ -7,46 +7,74 @@
 //
 
 import UIKit
+import CoreData
+import RealmSwift
 
 class FilterViewController: UITableViewController {
+    
+    //MARK:Properties
+    var fetchedCourses: Results<Course>!
+    
+    @IBOutlet var courseTableView: UITableView!
+    
+    @IBOutlet weak var filterButton: UIButton!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        let searchManager = SearchManager2()
+        searchManager.getJSON()
+        
+        //fetching all facilities from database
+        let realm = try! Realm()
+        fetchedCourses = realm.objects(Course.self)
+        courseTableView.reloadData()
+        //need to understand this-should be using course or facility
+        let sessionMatch = realm.objects(Session.self).filter
+        print(sessionMatch)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func configureCell(cell: SessionViewCell, indexPath: IndexPath) {
+        
+        cell.sessionName.text = fetchedCourses[indexPath.row].courseName
+        
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+       
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        return fetchedCourses.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SessionViewCell
 
-        // Configure the cell...
+        configureCell(cell: cell, indexPath: indexPath)
 
         return cell
     }
-    */
+    
 
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FilterSegue" {
+            let coursesVC = segue.destination as! CoursesViewController
+            let indexPath = tableView.indexPathForSelectedRow!
+            //coursesVC.selectedFacility = fetchedCourses[indexPath.row]
+        }
+    }
+
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
