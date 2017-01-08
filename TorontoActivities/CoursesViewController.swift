@@ -15,8 +15,6 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
 
     //MARK: Properties
 
-    var fetchedSessions: Results<Session>!
-
     var filters = [Filter]()
 
 
@@ -25,11 +23,6 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let realm = try! Realm()
-        fetchedSessions = realm.objects(Session.self)
-
-        
         
         filters = [Filter(name:"Age"),
                    Filter(name:"Location"),
@@ -45,15 +38,14 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return filters.count
-        return fetchedSessions.count
+        return filters.count
     }
     
  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FilterTableViewCell
         
-//        let filter = filters[indexPath.row]
-        cell.filterName!.text = fetchedSessions[indexPath.row].date + " - \(fetchedSessions[indexPath.row].time)"
+        let filter = filters[indexPath.row]
+        //sorry hamza, took out a line here don't remember what it was...probably something to display the filter
         return cell
     }
 

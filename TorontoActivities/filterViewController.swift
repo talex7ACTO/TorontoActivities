@@ -13,30 +13,34 @@ import RealmSwift
 class FilterViewController: UITableViewController {
     
     //MARK:Properties
-    var fetchedCourses: Results<Course>!
     
-    @IBOutlet var courseTableView: UITableView!
+    var fetchedSessions: Results<Session>!
+    
+    @IBOutlet var sessionTableView: UITableView!
     
     @IBOutlet weak var filterButton: UIButton!
+    
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let searchManager = SearchManager2()
-        searchManager.getJSON()
+//        let searchManager = SearchManager2()
+//        searchManager.getJSON()
         
-        //fetching all facilities from database
+        //fetching all sessions from database
         let realm = try! Realm()
-        fetchedCourses = realm.objects(Course.self)
-        courseTableView.reloadData()
-        //need to understand this-should be using course or facility
-        let sessionMatch = realm.objects(Session.self).filter
-        print(sessionMatch)
+        fetchedSessions = realm.objects(Session.self)
+        sessionTableView.reloadData()
+        
+
+//        let sessionMatch = realm.objects(Session.self).filter
+        
     }
     func configureCell(cell: SessionViewCell, indexPath: IndexPath) {
         
-        cell.sessionName.text = fetchedCourses[indexPath.row].courseName
+        cell.sessionName.text = fetchedSessions[indexPath.row].date + " - \(fetchedSessions[indexPath.row].time)"
         
         
     }
@@ -50,7 +54,7 @@ class FilterViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return fetchedCourses.count
+        return fetchedSessions.count
     }
 
     
