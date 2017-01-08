@@ -16,6 +16,9 @@ class FacilitiesViewController: UIViewController, UITableViewDataSource, UITable
     var fetchedFacility: Results<Facility>!
     var filteredFacility: Results<Facility>!
     
+    var sortedFacilities = [String : [Facility]]()
+    var keys = [String]()
+    
     var shouldShowSearchResults = false
     let searchController = UISearchController(searchResultsController: nil)
 
@@ -40,16 +43,48 @@ class FacilitiesViewController: UIViewController, UITableViewDataSource, UITable
         //fetching all facilities from database
         let realm = try! Realm()
         fetchedFacility = realm.objects(Facility.self)
-        tableView.reloadData()
+        
         
         let coursesMatch = realm.objects(Course.self).filter("ANY facility.locationID == '1053'")
         print(coursesMatch.count)
         print(coursesMatch)
         
+//        for facility in fetchedFacility {
+//            
+//            if sortedFacilities.count > 0 {
+//                var sectionArray = [Facility]()
+//                sectionArray.append(facility)
+//                sortedFacilities[facility.district] = sectionArray
+//                
+//            } else {
+//                
+//                for key in sortedFacilities.keys {
+//                    
+//                    if key == facility.district {
+//                        
+//                        sortedFacilities["\(key)"]!.append(facility)
+//                        break
+//                        
+//                    }
+//
+//                }
+//                
+//                if sortedFacilities.keys.contains(facility.district) {
+//                    var sectionArray = [Facility]()
+//                    sectionArray.append(facility)
+//                    sortedFacilities[facility.district] = sectionArray
+//                }
+//            }
+//        }
+//        
+//        for key in sortedFacilities.keys {
+//            keys.append(key)
+//        }
         
+        tableView.reloadData()
         
-        // Do any additional setup after loading the view.
     }
+    
     //filtering for the search
 //    func filterContentForSearchText(searchText: String, scope: String = "All") {
 //        filteredFacility = fetchedFacility.filter ({( facility : Facility) -> Bool in
@@ -79,11 +114,12 @@ class FacilitiesViewController: UIViewController, UITableViewDataSource, UITable
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
+//        return keys.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         return fetchedFacility.count
+//        return sortedFacilities[(keys[section])]!.count
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
