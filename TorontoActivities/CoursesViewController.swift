@@ -14,8 +14,9 @@ import RealmSwift
 class CoursesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
     //MARK: Properties
-    
+
     var fetchedSessions: Results<Session>!
+
     var filters = [Filter]()
 
 
