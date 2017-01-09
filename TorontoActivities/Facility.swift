@@ -24,6 +24,8 @@ class Facility: Object, Mappable  {
     dynamic var postalCode = ""
     dynamic var district = ""
     
+    var courses = List<Course>()
+    
 //    var coordinate : CLLocationCoordinate2D
 //    var title : String?
 //    var subtitle : String?
@@ -43,7 +45,6 @@ class Facility: Object, Mappable  {
         return "locationID"
     }
     
-    var courses = List<Course>()
     
     required convenience init?(map: Map) {
         self.init()

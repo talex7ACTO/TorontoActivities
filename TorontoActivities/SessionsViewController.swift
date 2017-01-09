@@ -1,5 +1,5 @@
 //
-//  FilterViewController.swift
+//  SessionsViewController.swift
 //  TorontoActivities
 //
 //  Created by Hamza Lakhani on 2017-01-04.
@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import RealmSwift
 
-class FilterViewController: UITableViewController {
+class SessionsViewController: UITableViewController {
     
     //MARK:Properties
     
@@ -39,8 +39,14 @@ class FilterViewController: UITableViewController {
     }
     func configureCell(cell: SessionViewCell, indexPath: IndexPath) {
         
-        cell.sessionName.text = fetchedSessions[indexPath.row].date + " - \(fetchedSessions[indexPath.row].time)"
         
+        
+//        let course = fetchedSessions[indexPath.row].course.first
+//        
+//        let facilityName = course?.facility.first?.name
+        
+        cell.sessionName.text = fetchedSessions[indexPath.row].date + " - \(fetchedSessions[indexPath.row].time) - "
+//            + facilityName!
         
     }
 

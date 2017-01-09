@@ -19,7 +19,8 @@ class SearchManager2: NSObject {
                 guard let facilities = response.result.value else { return }
                 let realm = try! Realm()
                 try! realm.write {
-                    realm.add(facilities, update: true)            }
+                    realm.add(facilities, update: true)
+                }
             
             }
             

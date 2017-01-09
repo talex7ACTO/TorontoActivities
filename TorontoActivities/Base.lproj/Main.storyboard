@@ -206,10 +206,10 @@
             </objects>
             <point key="canvasLocation" x="3620" y="859.52023988005999"/>
         </scene>
-        <!--Filter View Controller-->
+        <!--Sessions View Controller-->
         <scene sceneID="Cso-d7-aNE">
             <objects>
-                <tableViewController storyboardIdentifier="FilterViewController" id="Alx-aZ-v4N" customClass="FilterViewController" customModule="TorontoActivities" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SessionsViewController" id="Alx-aZ-v4N" customClass="SessionsViewController" customModule="TorontoActivities" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="98" sectionHeaderHeight="28" sectionFooterHeight="28" id="KaG-Fb-PA0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -255,7 +255,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zos-Vp-Rqk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2648.8000000000002" y="858.62068965517244"/>
+            <point key="canvasLocation" x="2146" y="1182"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="njf-Lx-cg6">

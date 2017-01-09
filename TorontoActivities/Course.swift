@@ -23,8 +23,8 @@ class Course: Object, Mappable  {
     dynamic var category = ""
     let facility = LinkingObjects(fromType: Facility.self, property: "courses")
 
-    
     var sessions = List<Session>()
+    
     override class func primaryKey() -> String{
         return "courseID"
     }
