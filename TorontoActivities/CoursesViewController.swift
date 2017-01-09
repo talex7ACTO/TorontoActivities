@@ -45,8 +45,8 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FilterTableViewCell
         
         let filter = filters[indexPath.row]
-        //sorry hamza, took out a line here don't remember what it was...probably something to display the filter
-        return cell
+        cell.filterName!.text = filter.name
+    return cell
     }
 
 
