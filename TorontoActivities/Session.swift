@@ -20,11 +20,10 @@ class Session: Object, Mappable  {
     
     let course = LinkingObjects(fromType: Course.self, property: "sessions")
 
-
+//
 //    override class func primaryKey() -> String{
-//        return "uniqueKey"
+//        return "time"
 //    }
-    
 
     
     required convenience init?(map: Map) {
