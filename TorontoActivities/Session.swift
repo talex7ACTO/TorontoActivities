@@ -17,13 +17,15 @@ class Session: Object, Mappable  {
     dynamic var facilityName = ""
     dynamic var category = ""
     dynamic var ageGroup = ""
+    dynamic var sessionID = ""
+    dynamic var courseID = ""
     
     let course = LinkingObjects(fromType: Course.self, property: "sessions")
 
-//
-//    override class func primaryKey() -> String{
-//        return "time"
-//    }
+
+    override class func primaryKey() -> String{
+        return "sessionID"
+    }
 
     
     required convenience init?(map: Map) {
@@ -33,9 +35,8 @@ class Session: Object, Mappable  {
     func mapping(map: Map) {
         time <- map["Time"]
         date <- map["Date"]
-        facilityName <- map["LocationName"]
-        category <- map["Category"]
-        ageGroup <- map["AgeGroup"]
+        sessionID <- map["SessionID"]
+        courseID <- map["CourseID"]
         
         
     }
