@@ -15,6 +15,7 @@ class SessionsViewController: UITableViewController {
     //MARK:Properties
     
     var fetchedSessions: Results<Session>!
+    var sessionArray = List<Session>()
     
     @IBOutlet var sessionTableView: UITableView!
     
@@ -25,12 +26,18 @@ class SessionsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let searchManager = SearchManager2()
-//        searchManager.getJSON()
+        //        let searchManager = SearchManager2()
+        //        searchManager.getJSON()
         
         //fetching all sessions from database
         let realm = try! Realm()
         fetchedSessions = realm.objects(Session.self)
+        print(fetchedSessions[0].course.count)
+        
+        let fetchedSessions2 = realm.objects(Course.self)
+        print(fetchedSessions2[0].facility.count)
+        
+        
         sessionTableView.reloadData()
         
 
@@ -45,7 +52,7 @@ class SessionsViewController: UITableViewController {
 //        
 //        let facilityName = course?.facility.first?.name
         
-        cell.sessionName.text = fetchedSessions[indexPath.row].date + " - \(fetchedSessions[indexPath.row].time) - "
+        cell.sessionName.text = fetchedSessions[indexPath.row].date + " - \(fetchedSessions[indexPath.row].time)"
 //            + facilityName!
         
     }
