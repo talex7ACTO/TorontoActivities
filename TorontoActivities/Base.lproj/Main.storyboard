@@ -178,6 +178,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Selection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxg-i9-OOx">
+                                                    <rect key="frame" x="283" y="18" width="72" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Eib-MA-69r" firstAttribute="top" secondItem="UQw-xP-iwq" secondAttribute="top" constant="20" id="GCI-xl-7yW"/>
@@ -187,6 +194,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="filterName" destination="Eib-MA-69r" id="Ltt-U6-REJ"/>
+                                            <outlet property="selectionLabel" destination="Kxg-i9-OOx" id="xPE-Eq-4QX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -200,13 +208,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Mu-Kb-BIm">
-                                        <rect key="frame" x="-8" y="-29" width="375" height="216"/>
+                                        <rect key="frame" x="-8" y="-29" width="375" height="174"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <outlet property="dataSource" destination="gGC-Te-88G" id="205-yG-F88"/>
                                             <outlet property="delegate" destination="gGC-Te-88G" id="xBN-tv-bIu"/>
                                         </connections>
                                     </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3O-lg-fBk">
+                                        <rect key="frame" x="31" y="157" width="48" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Search"/>
+                                        <connections>
+                                            <action selector="searchFilter:" destination="gGC-Te-88G" eventType="touchUpInside" id="osO-8u-yzK"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -217,6 +233,7 @@
                         <outlet property="filterTableView" destination="j1a-FU-sq6" id="KYH-oP-HPa"/>
                         <outlet property="filterView" destination="sGP-Ho-1vZ" id="gf4-dp-CX4"/>
                         <outlet property="pickerView" destination="1Mu-Kb-BIm" id="VgS-5P-Tgx"/>
+                        <outlet property="searchButton" destination="Y3O-lg-fBk" id="omF-xX-kz5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WxB-mu-bMT" userLabel="First Responder" sceneMemberID="firstResponder"/>

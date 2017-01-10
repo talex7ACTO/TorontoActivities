@@ -12,6 +12,7 @@ class FilterTableViewCell: UITableViewCell {
 
     @IBOutlet weak var filterName: UILabel!
     override func awakeFromNib() {
+        @IBOutlet weak var selectionLabel: UILabel!
         super.awakeFromNib()
         // Initialization code
     }

@@ -24,6 +24,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var searchButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +99,9 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         return pickerData[row]
     }
     
+    @IBAction func searchFilter(_ sender: Any) {
+        
+    }
     
 }
 
