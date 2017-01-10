@@ -27,8 +27,6 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
 
         
         ageArray = ["Early Child",
@@ -58,7 +56,9 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         pickerView.reloadAllComponents()
 
         filterView.isHidden = false
+        
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -75,7 +75,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
             filterNames.append(filter)
         }
         
-        cell.filterName!.text = filterNames[indexPath.row]
+        cell.filterName.text = filterNames[indexPath.row]
         return cell
     }
     

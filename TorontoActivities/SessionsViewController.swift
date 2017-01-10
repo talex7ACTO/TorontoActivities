@@ -31,12 +31,9 @@ class SessionsViewController: UITableViewController {
         
         //fetching all sessions from database
         let realm = try! Realm()
-        fetchedSessions = realm.objects(Session.self)
-        print(fetchedSessions[0].course.count)
+        fetchedSessions = realm.objects(Session.self).filter("ANY course.category = 'Skating'")
         
-        let fetchedSessions2 = realm.objects(Course.self)
-        print(fetchedSessions2[0].facility.count)
-        
+        print(fetchedSessions.count)
         
         sessionTableView.reloadData()
         
