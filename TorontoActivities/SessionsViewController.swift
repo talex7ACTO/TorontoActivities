@@ -83,7 +83,7 @@ class SessionsViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FilterSegue" {
-            let coursesVC = segue.destination as! CoursesViewController
+            let filtersVC = segue.destination as! FilterViewController
             let indexPath = tableView.indexPathForSelectedRow!
             //coursesVC.selectedFacility = fetchedCourses[indexPath.row]
         }

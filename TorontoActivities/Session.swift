@@ -14,9 +14,6 @@ class Session: Object, Mappable  {
     //Realm syntax
     dynamic var time = ""
     dynamic var date = ""
-    dynamic var facilityName = ""
-    dynamic var category = ""
-    dynamic var ageGroup = ""
     dynamic var sessionID = ""
     dynamic var courseID = ""
     
