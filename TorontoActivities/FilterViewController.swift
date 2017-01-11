@@ -130,10 +130,10 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         filterView.isHidden = true
         
     }
-    
+    //programetivvally applying segue instead of in story board
     @IBAction func applyFiltersButton(_ sender: UIButton) {
         
-        performSegue(withIdentifier: "filterSegue", sender: self)
+//        performSegue(withIdentifier: "filterSegue", sender: self)
         
     }
     
