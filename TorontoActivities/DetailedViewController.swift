@@ -18,7 +18,7 @@ class DetailedViewController: UIViewController {
 
     var selectedFacility : Facility!
     var initialLocation : CLLocation!
-    let regionRadius: CLLocationDistance = 150
+    let regionRadius: CLLocationDistance = 175
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
                                                                   regionRadius * 2.0, regionRadius * 2.0)
@@ -51,14 +51,5 @@ class DetailedViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

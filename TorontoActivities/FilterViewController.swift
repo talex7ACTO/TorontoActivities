@@ -12,7 +12,7 @@ import RealmSwift
 import CoreLocation
 
 
-class FilterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate {
+class FilterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
     
     //MARK: Properties
     var filters = [Filter]()
@@ -21,7 +21,6 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     var pickerData = [String]()
     var selectedFilters = [String]()
 
-    var locationManager: CLLocationManager!
 
     
     
@@ -37,11 +36,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         
         
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
         
-        view.backgroundColor = UIColor.gray
         
         ageGroupOptions = ["Early Child",
                     "Child",
@@ -146,13 +141,4 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
 
 }
 
-func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-    if status == .authorizedAlways {
-        if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
-            if CLLocationManager.isRangingAvailable() {
-                // do stuff
-            }
-        }
-    }
-}
 

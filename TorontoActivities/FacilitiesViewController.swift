@@ -9,8 +9,9 @@
 import UIKit
 import CoreData
 import RealmSwift
+import CoreLocation
 
-class FacilitiesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FacilitiesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate  {
     
     //! makes it say its def there
     var fetchedFacility: Results<Facility>!
@@ -21,13 +22,21 @@ class FacilitiesViewController: UIViewController, UITableViewDataSource, UITable
     
     var shouldShowSearchResults = false
     let searchController = UISearchController(searchResultsController: nil)
+    var locationManager: CLLocationManager!
+
 
     @IBOutlet var tableView: UITableView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //location stuff
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
         
+        view.backgroundColor = UIColor.gray
+
         
 //        searchController.searchResultsUpdater = self
 //        searchController.searchBar.delegate = self
@@ -135,17 +144,18 @@ class FacilitiesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+// location stuff
+func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    if status == .authorizedAlways {
+        if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
+            if CLLocationManager.isRangingAvailable() {
+                // do stuff
+            }
+        }
+    }
+}
+
 
 //extension FacilitiesViewController: UISearchBarDelegate {
 //    // MARK: - UISearchBar Delegate
