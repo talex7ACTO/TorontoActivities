@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -148,7 +149,7 @@
         <!--Filter View Controller-->
         <scene sceneID="Hcg-10-VZU">
             <objects>
-                <viewController storyboardIdentifier="CoursesViewController" id="gGC-Te-88G" customClass="FilterViewController" customModule="TorontoActivities" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FilterViewController" id="gGC-Te-88G" customClass="FilterViewController" customModule="TorontoActivities" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tuq-dS-jTZ"/>
                         <viewControllerLayoutGuide type="bottom" id="hAR-HA-XoT"/>
@@ -178,8 +179,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Selection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxg-i9-OOx">
-                                                    <rect key="frame" x="283" y="18" width="72" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Selection" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxg-i9-OOx">
+                                                    <rect key="frame" x="202" y="18" width="153" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -203,33 +204,77 @@
                                     <outlet property="delegate" destination="gGC-Te-88G" id="KFV-4h-MCv"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sGP-Ho-1vZ">
-                                <rect key="frame" x="0.0" y="472" width="375" height="195"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sGP-Ho-1vZ">
+                                <rect key="frame" x="0.0" y="400" width="375" height="267"/>
                                 <subviews>
-                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Mu-Kb-BIm">
-                                        <rect key="frame" x="-8" y="-29" width="375" height="174"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Mu-Kb-BIm">
+                                        <rect key="frame" x="0.0" y="51" width="375" height="216"/>
                                         <connections>
                                             <outlet property="dataSource" destination="gGC-Te-88G" id="205-yG-F88"/>
                                             <outlet property="delegate" destination="gGC-Te-88G" id="xBN-tv-bIu"/>
                                         </connections>
                                     </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3O-lg-fBk">
-                                        <rect key="frame" x="31" y="157" width="48" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Search"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzk-od-5UT">
+                                        <rect key="frame" x="51" y="11" width="48" height="30"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelButton:" destination="gGC-Te-88G" eventType="touchUpInside" id="dhd-55-6gh"/>
+                                            <action selector="searchFilter:" destination="gGC-Te-88G" eventType="touchUpInside" id="JoD-fn-KEd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3O-lg-fBk">
+                                        <rect key="frame" x="281.5" y="11" width="37" height="30"/>
+                                        <state key="normal" title="Done"/>
                                         <connections>
                                             <action selector="searchFilter:" destination="gGC-Te-88G" eventType="touchUpInside" id="osO-8u-yzK"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="1Mu-Kb-BIm" firstAttribute="width" secondItem="sGP-Ho-1vZ" secondAttribute="width" id="6Xz-Wq-Fql"/>
+                                    <constraint firstItem="1Mu-Kb-BIm" firstAttribute="top" secondItem="gzk-od-5UT" secondAttribute="bottom" constant="10" id="8gr-HN-eTT"/>
+                                    <constraint firstItem="Y3O-lg-fBk" firstAttribute="centerX" secondItem="sGP-Ho-1vZ" secondAttribute="centerX" multiplier="1.6" id="Q24-Bj-ZGZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="1Mu-Kb-BIm" secondAttribute="bottom" id="RWQ-jK-Dch"/>
+                                    <constraint firstItem="1Mu-Kb-BIm" firstAttribute="centerX" secondItem="sGP-Ho-1vZ" secondAttribute="centerX" id="Yq0-pY-9fa"/>
+                                    <constraint firstItem="gzk-od-5UT" firstAttribute="centerX" secondItem="sGP-Ho-1vZ" secondAttribute="centerX" multiplier="0.4" id="jje-rn-8aw"/>
+                                    <constraint firstItem="1Mu-Kb-BIm" firstAttribute="top" secondItem="Y3O-lg-fBk" secondAttribute="bottom" constant="10" id="keR-N9-8Wn"/>
+                                </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQb-AE-aqB">
+                                <rect key="frame" x="56" y="315" width="262.5" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Apply Filters">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="applyFiltersButton:" destination="gGC-Te-88G" eventType="touchUpInside" id="65b-CI-P1A"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fba-aP-S2c">
+                                <rect key="frame" x="326" y="315" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clearFiltersButton:" destination="gGC-Te-88G" eventType="touchUpInside" id="ILe-Gq-mju"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bQb-AE-aqB" firstAttribute="centerX" secondItem="C8c-HA-3mJ" secondAttribute="centerX" id="7dK-qb-6lb"/>
+                            <constraint firstItem="sGP-Ho-1vZ" firstAttribute="leading" secondItem="C8c-HA-3mJ" secondAttribute="leading" id="S7g-zo-zhN"/>
+                            <constraint firstItem="bQb-AE-aqB" firstAttribute="centerY" secondItem="C8c-HA-3mJ" secondAttribute="centerY" id="Zp3-86-F7M"/>
+                            <constraint firstItem="sGP-Ho-1vZ" firstAttribute="height" secondItem="C8c-HA-3mJ" secondAttribute="height" multiplier="0.4" id="jwl-fj-8dw"/>
+                            <constraint firstItem="bQb-AE-aqB" firstAttribute="width" secondItem="C8c-HA-3mJ" secondAttribute="width" multiplier="0.7" id="oGp-yY-Yg8"/>
+                            <constraint firstItem="hAR-HA-XoT" firstAttribute="top" secondItem="sGP-Ho-1vZ" secondAttribute="bottom" id="sYQ-s0-me3"/>
+                            <constraint firstAttribute="trailing" secondItem="sGP-Ho-1vZ" secondAttribute="trailing" id="yKZ-kK-XXh"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="applyFiltersButton" destination="bQb-AE-aqB" id="dCC-q8-Jr6"/>
+                        <outlet property="cancelButton" destination="gzk-od-5UT" id="64g-Bj-eNM"/>
                         <outlet property="filterTableView" destination="j1a-FU-sq6" id="KYH-oP-HPa"/>
                         <outlet property="filterView" destination="sGP-Ho-1vZ" id="gf4-dp-CX4"/>
                         <outlet property="pickerView" destination="1Mu-Kb-BIm" id="VgS-5P-Tgx"/>

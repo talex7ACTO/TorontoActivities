@@ -25,8 +25,8 @@ class PageViewController: UIPageViewController,UIPageViewControllerDataSource{
     }
 
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newColoredViewController(name: "Facilities"),
-                self.newColoredViewController(name: "Sessions")]
+        return [self.newColoredViewController(name: "Filter"),
+                self.newColoredViewController(name: "Facilities")]
         
     }()
     

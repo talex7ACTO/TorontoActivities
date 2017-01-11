@@ -19,15 +19,17 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     var typeOptions = [String]()
     var pickerData = [String]()
     
+    var selectedFilters = [String]()
     
     @IBOutlet weak var filterTableView: UITableView!
     @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var applyFiltersButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         ageGroupOptions = ["Early Child",
                     "Child",
@@ -47,9 +49,14 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         filters.append(ageGroupFilter)
         filters.append(typeFilter)
         
+        for filter in filters{
+            
+        selectedFilters.append(filter.selectedOption)
         
+        }
+    
         filterView.isHidden = true
-    }   
+    }
     // MARK: - Table View
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -71,12 +78,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FilterTableViewCell
-//        
-//        var filterNames = [String]()
-//        for filter in filters.keys {
-//            filterNames.append(filter)
-//        }
-        
+
         cell.filterName.text = filters[indexPath.row].name
         cell.selectionLabel.text = filters[indexPath.row].selectedOption
         return cell
@@ -102,11 +104,38 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     @IBAction func searchFilter(_ sender: Any) {
-        filters[(filterTableView.indexPathForSelectedRow?.row)!].selectedOption = pickerData[pickerView.selectedRow(inComponent: 0)]
+        
+        let selectedFilterRow = filterTableView.indexPathForSelectedRow?.row
+        
+        let selectedOption = pickerData[pickerView.selectedRow(inComponent: 0)]
+        
+        filters[selectedFilterRow!].selectedOption = selectedOption
+        
+        selectedFilters[selectedFilterRow!] = selectedOption
         
         filterView.isHidden = true
         filterTableView.reloadData()
     }
     
+    @IBAction func cancelButton(_ sender: UIButton) {
+        
+        filterView.isHidden = true
+        
+    }
+    
+    @IBAction func applyFiltersButton(_ sender: UIButton) {
+        
+        
+        
+    }
+    
+//    @IBAction func clearFiltersButton(_ sender: UIButton) {
+//        
+//        for filter in selectedFilters {
+//            
+//            filter = ""
+//            
+//        }
+//    }
 }
 
