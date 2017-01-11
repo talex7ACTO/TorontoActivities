@@ -9,17 +9,21 @@
 import UIKit
 import CoreData
 import RealmSwift
+import CoreLocation
 
 
-class FilterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
+class FilterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate {
     
     //MARK: Properties
     var filters = [Filter]()
     var ageGroupOptions = [String]()
     var typeOptions = [String]()
     var pickerData = [String]()
-    
     var selectedFilters = [String]()
+
+    var locationManager: CLLocationManager!
+
+    
     
     @IBOutlet weak var filterTableView: UITableView!
     @IBOutlet weak var filterView: UIView!
@@ -31,6 +35,13 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        
+        view.backgroundColor = UIColor.gray
         
         ageGroupOptions = ["Early Child",
                            "Child",
@@ -168,6 +179,16 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
             }
             
             sessionsVC.fetchedSessions = filteredSessions
+        }
+    }
+}
+
+func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    if status == .authorizedAlways {
+        if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
+            if CLLocationManager.isRangingAvailable() {
+                // do stuff
+            }
         }
     }
 }
