@@ -10,14 +10,14 @@
 import UIKit
 import MapKit
 
-class Filter {
+struct Filter {
     
-    let name : String?
-
+    let name : String
+    let options : [String]
+    
+    var selectedOption : String
     
     
-    init(name: String) {
-        self.name =  name
-
-            }
 }
+
+

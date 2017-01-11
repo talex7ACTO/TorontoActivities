@@ -11,8 +11,10 @@ import UIKit
 class FilterTableViewCell: UITableViewCell {
 
     @IBOutlet weak var filterName: UILabel!
+    @IBOutlet weak var selectionLabel: UILabel!
+    
     override func awakeFromNib() {
-        @IBOutlet weak var selectionLabel: UILabel!
+        
         super.awakeFromNib()
         // Initialization code
     }

@@ -14,46 +14,47 @@ import RealmSwift
 class FilterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
     
     //MARK: Properties
-    var filters = [String:[String]]()
-    var ageArray = [String]()
-    var typeArray = [String]()
+    var filters = [Filter]()
+    var ageGroupOptions = [String]()
+    var typeOptions = [String]()
     var pickerData = [String]()
     
     
     @IBOutlet weak var filterTableView: UITableView!
-    
     @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var searchButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-        ageArray = ["Early Child",
+        
+        ageGroupOptions = ["Early Child",
                     "Child",
                     "Youth",
                     "Child & Youth",
                     "Adult",
                     "Older Adult"]
         
-        typeArray = ["Hockey & Shinny",
+        typeOptions = ["Hockey & Shinny",
                      "Leisure Skating",
                      "Womens Shinny"]
         
-        filters = ["Age":ageArray,
-                   "Type":typeArray]
+        let ageGroupFilter = Filter(name: "Age Group", options: ageGroupOptions, selectedOption: "")
+        
+        let typeFilter = Filter(name: "Type", options: typeOptions, selectedOption: "")
+        
+        filters.append(ageGroupFilter)
+        filters.append(typeFilter)
         
         
         filterView.isHidden = true
-    }
+    }   
     // MARK: - Table View
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let currentCell = filterTableView.cellForRow(at: indexPath) as! FilterTableViewCell
-        
-        pickerData = filters[currentCell.filterName.text!]!
+        pickerData = filters[indexPath.row].options
         pickerView.reloadAllComponents()
 
         filterView.isHidden = false
@@ -70,13 +71,14 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FilterTableViewCell
+//        
+//        var filterNames = [String]()
+//        for filter in filters.keys {
+//            filterNames.append(filter)
+//        }
         
-        var filterNames = [String]()
-        for filter in filters.keys {
-            filterNames.append(filter)
-        }
-        
-        cell.filterName.text = filterNames[indexPath.row]
+        cell.filterName.text = filters[indexPath.row].name
+        cell.selectionLabel.text = filters[indexPath.row].selectedOption
         return cell
     }
     
@@ -100,7 +102,10 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     @IBAction func searchFilter(_ sender: Any) {
+        filters[(filterTableView.indexPathForSelectedRow?.row)!].selectedOption = pickerData[pickerView.selectedRow(inComponent: 0)]
         
+        filterView.isHidden = true
+        filterTableView.reloadData()
     }
     
 }
