@@ -32,15 +32,15 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         
         ageGroupOptions = ["Early Child",
-                    "Child",
-                    "Youth",
-                    "Child & Youth",
-                    "Adult",
-                    "Older Adult"]
+                           "Child",
+                           "Youth",
+                           "Child & Youth",
+                           "Adult",
+                           "Older Adult"]
         
         typeOptions = ["Hockey & Shinny",
-                     "Leisure Skating",
-                     "Womens Shinny"]
+                       "Leisure Skating",
+                       "Womens Shinny"]
         
         let ageGroupFilter = Filter(name: "Age Group", options: ageGroupOptions, selectedOption: "")
         
@@ -51,12 +51,13 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         
         for filter in filters{
             
-        selectedFilters.append(filter.selectedOption)
-        
+            selectedFilters.append(filter.selectedOption)
+            
         }
     
         filterView.isHidden = true
     }
+    
     // MARK: - Table View
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -129,13 +130,20 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
-//    @IBAction func clearFiltersButton(_ sender: UIButton) {
-//        
-//        for filter in selectedFilters {
-//            
-//            filter = ""
-//            
-//        }
-//    }
+    @IBAction func clearFiltersButton(_ sender: UIButton) {
+        
+        for i in 0...(filters.count - 1) {
+            filters[i].selectedOption = ""
+        }
+        
+        var blankArray = [String]()
+        
+        for i in 0...(filters.count - 1) {
+            blankArray.append(filters[i].selectedOption)
+        }
+        
+        selectedFilters = blankArray
+        filterTableView.reloadData()
+    }
 }
 

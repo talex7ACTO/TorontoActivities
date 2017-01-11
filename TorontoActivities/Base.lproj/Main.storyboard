@@ -219,7 +219,6 @@
                                         <state key="normal" title="Cancel"/>
                                         <connections>
                                             <action selector="cancelButton:" destination="gGC-Te-88G" eventType="touchUpInside" id="dhd-55-6gh"/>
-                                            <action selector="searchFilter:" destination="gGC-Te-88G" eventType="touchUpInside" id="JoD-fn-KEd"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3O-lg-fBk">
