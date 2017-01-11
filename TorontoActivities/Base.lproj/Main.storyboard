@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Psc-jm-aV3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Psc-jm-aV3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -203,7 +203,6 @@
                                         <state key="normal" title="Cancel"/>
                                         <connections>
                                             <action selector="cancelButton:" destination="gGC-Te-88G" eventType="touchUpInside" id="dhd-55-6gh"/>
-                                            <action selector="searchFilter:" destination="gGC-Te-88G" eventType="touchUpInside" id="JoD-fn-KEd"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3O-lg-fBk">
@@ -234,6 +233,7 @@
                                 </state>
                                 <connections>
                                     <action selector="applyFiltersButton:" destination="gGC-Te-88G" eventType="touchUpInside" id="65b-CI-P1A"/>
+                                    <segue destination="Alx-aZ-v4N" kind="show" identifier="filterSegue" id="IQC-GR-Tzy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -255,7 +255,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Clear"/>
                                 <connections>
-                                    <action selector="clearFIlters:" destination="gGC-Te-88G" eventType="touchUpInside" id="bf6-f5-hIn"/>
+                                    <action selector="clearFiltersButton:" destination="gGC-Te-88G" eventType="touchUpInside" id="eIc-kq-hyV"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -263,7 +263,7 @@
                     <connections>
                         <outlet property="applyFiltersButton" destination="bQb-AE-aqB" id="dCC-q8-Jr6"/>
                         <outlet property="cancelButton" destination="gzk-od-5UT" id="64g-Bj-eNM"/>
-                        <outlet property="clearFilters" destination="aCi-mE-7KB" id="90e-Yr-gaC"/>
+                        <outlet property="clearFiltersButton" destination="aCi-mE-7KB" id="UPS-vX-50r"/>
                         <outlet property="filterTableView" destination="j1a-FU-sq6" id="KYH-oP-HPa"/>
                         <outlet property="filterView" destination="sGP-Ho-1vZ" id="gf4-dp-CX4"/>
                         <outlet property="pickerView" destination="1Mu-Kb-BIm" id="VgS-5P-Tgx"/>
@@ -351,6 +351,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Psc-jm-aV3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="eeu-Wm-vib">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -384,4 +385,7 @@
             <point key="canvasLocation" x="3286" y="1522"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="IQC-GR-Tzy"/>
+    </inferredMetricsTieBreakers>
 </document>

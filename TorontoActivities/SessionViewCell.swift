@@ -11,6 +11,7 @@ import UIKit
 class SessionViewCell: UITableViewCell {
 
     @IBOutlet weak var sessionName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -30,7 +30,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var applyFiltersButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var clearFilters: UIBarButtonItem!
+    @IBOutlet weak var clearFiltersButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,15 +39,15 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         
         
         ageGroupOptions = ["Early Child",
-                    "Child",
-                    "Youth",
-                    "Child & Youth",
-                    "Adult",
-                    "Older Adult"]
+                           "Child",
+                           "Youth",
+                           "Child & Youth",
+                           "Adult",
+                           "Older Adult"]
         
         typeOptions = ["Hockey & Shinny",
-                     "Leisure Skating",
-                     "Womens Shinny"]
+                       "Leisure Skating",
+                       "Womens Shinny"]
         
         let ageGroupFilter = Filter(name: "Age Group", options: ageGroupOptions, selectedOption: "")
         
@@ -58,12 +58,13 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         
         for filter in filters{
             
-        selectedFilters.append(filter.selectedOption)
-        
+            selectedFilters.append(filter.selectedOption)
+            
         }
     
         filterView.isHidden = true
     }
+    
     // MARK: - Table View
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -132,13 +133,49 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func applyFiltersButton(_ sender: UIButton) {
         
-        
+        performSegue(withIdentifier: "filterSegue", sender: self)
         
     }
     
-    @IBAction func clearFIlters(_ sender: Any) {
-    }
 
+    @IBAction func clearFiltersButton(_ sender: UIButton) {
+        
+        for i in 0...(filters.count - 1) {
+            filters[i].selectedOption = ""
+        }
+        
+        var blankArray = [String]()
+        
+        for i in 0...(filters.count - 1) {
+            blankArray.append(filters[i].selectedOption)
+        }
+        
+        selectedFilters = blankArray
+        filterTableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "filterSegue" {
+            let sessionsVC = SessionsViewController()
+            
+            let realm = try! Realm()
+            var filteredSessions = realm.objects(Session.self).filter("ANY course.category = 'Skating'")
+            
+            if selectedFilters[0] != "" {
+                let filteredSessionsTemp = filteredSessions.filter("ANY course.ageGroup = %@", selectedFilters[0])
+                if selectedFilters[1] != "" {
+                    let filteredSessionsTemp2 = filteredSessionsTemp.filter("ANY course.category = %@", selectedFilters[1])
+                    filteredSessions = filteredSessionsTemp2
+                }
+            } else if selectedFilters[1] != "" {
+                let filteredSessionsTemp = filteredSessions.filter("ANY course.category = %@", selectedFilters[1])
+                filteredSessions = filteredSessionsTemp
+                
+            }
+            
+            sessionsVC.fetchedSessions = filteredSessions
+        }
+    }
 }
 
 
