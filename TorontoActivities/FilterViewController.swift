@@ -27,6 +27,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var applyFiltersButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var clearFiltersButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,10 +127,11 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func applyFiltersButton(_ sender: UIButton) {
         
-        
+        performSegue(withIdentifier: "filterSegue", sender: self)
         
     }
     
+
     @IBAction func clearFiltersButton(_ sender: UIButton) {
         
         for i in 0...(filters.count - 1) {
@@ -144,6 +146,29 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         
         selectedFilters = blankArray
         filterTableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "filterSegue" {
+            let sessionsVC = SessionsViewController()
+            
+            let realm = try! Realm()
+            var filteredSessions = realm.objects(Session.self).filter("ANY course.category = 'Skating'")
+            
+            if selectedFilters[0] != "" {
+                let filteredSessionsTemp = filteredSessions.filter("ANY course.ageGroup = %@", selectedFilters[0])
+                if selectedFilters[1] != "" {
+                    let filteredSessionsTemp2 = filteredSessionsTemp.filter("ANY course.category = %@", selectedFilters[1])
+                    filteredSessions = filteredSessionsTemp2
+                }
+            } else if selectedFilters[1] != "" {
+                let filteredSessionsTemp = filteredSessions.filter("ANY course.category = %@", selectedFilters[1])
+                filteredSessions = filteredSessionsTemp
+                
+            }
+            
+            sessionsVC.fetchedSessions = filteredSessions
+        }
     }
 }
 
