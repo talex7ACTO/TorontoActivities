@@ -27,6 +27,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var applyFiltersButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var clearFilters: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,13 +130,8 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
-//    @IBAction func clearFiltersButton(_ sender: UIButton) {
-//        
-//        for filter in selectedFilters {
-//            
-//            filter = ""
-//            
-//        }
-//    }
+    @IBAction func clearFIlters(_ sender: Any) {
+    }
+
 }
 

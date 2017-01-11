@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hwQ-Zs-YWZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Psc-jm-aV3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -77,7 +77,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="zpf-KF-cIT"/>
             </objects>
-            <point key="canvasLocation" x="1648.8" y="158.77061469265368"/>
+            <point key="canvasLocation" x="4188" y="678.71064467766121"/>
         </scene>
         <!--Detailed View Controller-->
         <scene sceneID="4Rx-AL-oJd">
@@ -128,23 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lzI-Ng-Oc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2468" y="158.77061469265368"/>
-        </scene>
-        <!--Page View Controller-->
-        <scene sceneID="V1E-SI-lBE">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="FCV-mi-B3b" customClass="PageViewController" customModule="TorontoActivities" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="cQX-us-Ibd">
-                        <barButtonItem key="rightBarButtonItem" title="Filter" id="vhe-Zi-OoR">
-                            <connections>
-                                <segue destination="gGC-Te-88G" kind="presentation" identifier="Cell" id="bui-ig-dS5"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </pageViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qjA-kJ-rXB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="876" y="678.71064467766121"/>
+            <point key="canvasLocation" x="5191" y="679"/>
         </scene>
         <!--Filter View Controller-->
         <scene sceneID="Hcg-10-VZU">
@@ -205,7 +189,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sGP-Ho-1vZ">
-                                <rect key="frame" x="0.0" y="400" width="375" height="267"/>
+                                <rect key="frame" x="0.0" y="351" width="375" height="267"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Mu-Kb-BIm">
                                         <rect key="frame" x="0.0" y="51" width="375" height="216"/>
@@ -252,14 +236,6 @@
                                     <action selector="applyFiltersButton:" destination="gGC-Te-88G" eventType="touchUpInside" id="65b-CI-P1A"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fba-aP-S2c">
-                                <rect key="frame" x="326" y="315" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Clear"/>
-                                <connections>
-                                    <action selector="clearFiltersButton:" destination="gGC-Te-88G" eventType="touchUpInside" id="ILe-Gq-mju"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -272,9 +248,22 @@
                             <constraint firstAttribute="trailing" secondItem="sGP-Ho-1vZ" secondAttribute="trailing" id="yKZ-kK-XXh"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="gje-B4-CSF">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="aCi-mE-7KB">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IXm-TW-BRB">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clearFIlters:" destination="gGC-Te-88G" eventType="touchUpInside" id="bf6-f5-hIn"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="applyFiltersButton" destination="bQb-AE-aqB" id="dCC-q8-Jr6"/>
                         <outlet property="cancelButton" destination="gzk-od-5UT" id="64g-Bj-eNM"/>
+                        <outlet property="clearFilters" destination="aCi-mE-7KB" id="90e-Yr-gaC"/>
                         <outlet property="filterTableView" destination="j1a-FU-sq6" id="KYH-oP-HPa"/>
                         <outlet property="filterView" destination="sGP-Ho-1vZ" id="gf4-dp-CX4"/>
                         <outlet property="pickerView" destination="1Mu-Kb-BIm" id="VgS-5P-Tgx"/>
@@ -283,9 +272,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WxB-mu-bMT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3620" y="859.52023988005999"/>
+            <point key="canvasLocation" x="4188" y="1521.5892053973014"/>
         </scene>
-        <!--Sessions View Controller-->
+        <!--Session-->
         <scene sceneID="Cso-d7-aNE">
             <objects>
                 <tableViewController storyboardIdentifier="SessionsViewController" id="Alx-aZ-v4N" customClass="SessionsViewController" customModule="TorontoActivities" customModuleProvider="target" sceneMemberID="viewController">
@@ -327,6 +316,7 @@
                             <outlet property="delegate" destination="Alx-aZ-v4N" id="m5h-T2-3qr"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Session" id="qW2-0M-x5Q"/>
                     <navigationItem key="navigationItem" id="Ch8-n8-rx6"/>
                     <connections>
                         <outlet property="sessionTableView" destination="KaG-Fb-PA0" id="s3a-jb-6R8"/>
@@ -334,25 +324,64 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zos-Vp-Rqk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2146" y="1182"/>
+            <point key="canvasLocation" x="3286" y="2361"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="njf-Lx-cg6">
+        <!--Facility-->
+        <scene sceneID="6GO-lJ-IgS">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hwQ-Zs-YWZ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AH7-nU-Ycn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Facility" id="EZX-HI-rzG"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IPS-Yx-XfY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CK2-tt-nJc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="FCV-mi-B3b" kind="relationship" relationship="rootViewController" id="g1j-t1-XT5"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="W7J-xb-cP8"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ck0-lF-1WO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gp9-Kw-huL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-63.200000000000003" y="678.71064467766121"/>
+            <point key="canvasLocation" x="3248.8000000000002" y="678.71064467766121"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="0Yx-Cg-Mvc">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Psc-jm-aV3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="eeu-Wm-vib">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="AH7-nU-Ycn" kind="relationship" relationship="viewControllers" id="KaW-hl-Iai"/>
+                        <segue destination="qCf-7c-Vb2" kind="relationship" relationship="viewControllers" id="PxU-rr-bC4"/>
+                        <segue destination="Alx-aZ-v4N" kind="relationship" relationship="viewControllers" id="Rzh-K0-e9J"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="twI-8L-5fE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2178" y="1522"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="yRb-mm-8RL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qCf-7c-Vb2" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" id="zRO-tu-uM1"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qVe-PP-Yru">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gGC-Te-88G" kind="relationship" relationship="rootViewController" id="Ytu-bg-auI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3qM-om-rOx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3286" y="1522"/>
         </scene>
     </scenes>
 </document>
