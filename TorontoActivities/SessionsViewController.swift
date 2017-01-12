@@ -54,12 +54,15 @@ class SessionsViewController: UITableViewController {
         
         
         
-//        let course = fetchedSessions[indexPath.row].course.first
+        let course = fetchedSessions[indexPath.row].course.first
 //        
 //        let facilityName = course?.facility.first?.name
         
-        cell.sessionName.text = fetchedSessions[indexPath.row].date + " - \(fetchedSessions[indexPath.row].time)"
-//            + facilityName!
+        cell.sessionNameLabel.text = fetchedSessions[indexPath.row].date + " - \(fetchedSessions[indexPath.row].time)"
+        
+        cell.sessionTypeLabel.text = course?.category
+        cell.sessionAgeGroupLabel.text = course?.ageGroup
+
         
     }
 

@@ -29,8 +29,11 @@ class SessionViewCell: UITableViewCell {
     
     
     @IBAction func goToFacilities(_ sender: Any) {
+        
     }
+    
     @IBAction func getDirection(_ sender: Any) {
+        
     }
 
 }

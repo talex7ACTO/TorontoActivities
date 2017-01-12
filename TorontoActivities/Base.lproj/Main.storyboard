@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Psc-jm-aV3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Psc-jm-aV3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -323,7 +323,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SessionTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Kd-bj-C3u">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SessionTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Kd-bj-C3u">
                                             <rect key="frame" x="8" y="8" width="259" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="xCC-wk-R1m"/>
@@ -373,19 +373,16 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="4Kd-bj-C3u" firstAttribute="trailing" secondItem="MeY-pE-meB" secondAttribute="trailingMargin" constant="-100" id="KIv-Mv-i1t"/>
-                                        <constraint firstItem="4Kd-bj-C3u" firstAttribute="top" secondItem="MeY-pE-meB" secondAttribute="topMargin" constant="30" id="VhK-PA-rIo"/>
+                                        <constraint firstItem="4Kd-bj-C3u" firstAttribute="top" secondItem="MeY-pE-meB" secondAttribute="topMargin" id="VhK-PA-rIo"/>
                                         <constraint firstItem="4Kd-bj-C3u" firstAttribute="leading" secondItem="MeY-pE-meB" secondAttribute="leadingMargin" id="mCr-vg-2nQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <outlet property="ageGroup" destination="Zye-AT-En6" id="EuR-Qe-V1z"/>
                                     <outlet property="directionsButton" destination="nBR-qh-ZJZ" id="0ED-Cb-YOl"/>
-                                    <outlet property="facilitesPage" destination="ACN-dG-gFv" id="ND9-2N-uDw"/>
                                     <outlet property="facilitiesButton" destination="ACN-dG-gFv" id="gCF-S0-LZo"/>
                                     <outlet property="sessionAgeGroupLabel" destination="Zye-AT-En6" id="rVZ-x9-Ux4"/>
                                     <outlet property="sessionNameLabel" destination="4Kd-bj-C3u" id="hH4-01-cDR"/>
-                                    <outlet property="sessionType" destination="92O-CU-oJt" id="QCy-zy-Gyc"/>
                                     <outlet property="sessionTypeLabel" destination="92O-CU-oJt" id="cMZ-QG-2yJ"/>
                                 </connections>
                             </tableViewCell>
