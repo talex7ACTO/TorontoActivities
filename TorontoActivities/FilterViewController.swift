@@ -200,26 +200,36 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
             
             
             //come up with more elegant solution
+//            if selectedFilters[0] != "" {
+//                let filteredSessionsTemp = filteredSessions.filter("ANY course.ageGroup = %@", selectedFilters[0])
+//                if selectedFilters[1] != "" {
+//                    let filteredSessionsTemp2 = filteredSessionsTemp.filter("ANY course.programName = %@", selectedFilters[1])
+//                    if selectedFilters[2] != "" {
+//                        let filteredSessionsTemp3 = filteredSessionsTemp2.filter("ANY course.programName = %@", selectedFilters[2])
+//                        filteredSessions = filteredSessionsTemp3
+//                    }
+//                }
+//            } else if selectedFilters[1] != "" {
+//                let filteredSessionsTemp = filteredSessions.filter("ANY course.programName = %@", selectedFilters[1])
+//                if selectedFilters[2] != "" {
+//                    let filteredSessionsTemp2 = filteredSessionsTemp.filter("ANY course.programName = %@", selectedFilters[2])
+//                    filteredSessions = filteredSessionsTemp2
+//                }
+//            } else if selectedFilters[2] != "" {
+//                let filteredSessionsTemp = filteredSessions.filter("ANY course.programName = %@", selectedFilters[2])
+//                filteredSessions = filteredSessionsTemp
+//            }
+            
             if selectedFilters[0] != "" {
                 let filteredSessionsTemp = filteredSessions.filter("ANY course.ageGroup = %@", selectedFilters[0])
                 if selectedFilters[1] != "" {
                     let filteredSessionsTemp2 = filteredSessionsTemp.filter("ANY course.programName = %@", selectedFilters[1])
-                    if selectedFilters[2] != "" {
-                        let filteredSessionsTemp3 = filteredSessionsTemp2.filter("ANY course.programName = %@", selectedFilters[2])
-                        filteredSessions = filteredSessionsTemp3
-                    }
+                        filteredSessions = filteredSessionsTemp2
                 }
             } else if selectedFilters[1] != "" {
                 let filteredSessionsTemp = filteredSessions.filter("ANY course.programName = %@", selectedFilters[1])
-                if selectedFilters[2] != "" {
-                    let filteredSessionsTemp2 = filteredSessionsTemp.filter("ANY course.programName = %@", selectedFilters[2])
-                    filteredSessions = filteredSessionsTemp2
+                    filteredSessions = filteredSessionsTemp
                 }
-            } else if selectedFilters[2] != "" {
-                let filteredSessionsTemp = filteredSessions.filter("ANY course.programName = %@", selectedFilters[2])
-                filteredSessions = filteredSessionsTemp
-            }
-
             
             let orderedArray = filteredSessions.sorted {
                 return createDate(from: $0)!.timeIntervalSince(createDate(from: $1)!) < 0
