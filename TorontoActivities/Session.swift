@@ -17,6 +17,8 @@ class Session: Object, Mappable  {
     dynamic var sessionID = ""
     dynamic var courseID = ""
     
+    var fullDate = Date()
+    
     let course = LinkingObjects(fromType: Course.self, property: "sessions")
 
 
@@ -29,6 +31,7 @@ class Session: Object, Mappable  {
         self.init()
     }
     
+       
     func mapping(map: Map) {
         time <- map["Time"]
         date <- map["Date"]

@@ -133,7 +133,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     //programetivvally applying segue instead of in story board
     @IBAction func applyFiltersButton(_ sender: UIButton) {
         
-//        performSegue(withIdentifier: "filterSegue", sender: self)
+        performSegue(withIdentifier: "filterSegue", sender: self)
         
     }
     
@@ -154,7 +154,24 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         filterTableView.reloadData()
     }
     
+    func createDate(from session: Session) -> Date? {
+        // Setup Date Formatter
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "US_en")
+        
+        // This should match your full Date string..
+        formatter.dateFormat = "EEE MMM d h:mma yyyy"
+        
+        let endTime = session.time.components(separatedBy: " ")[2]
+        
+        // Get Full string by combining Time with Date
+        let fullDate = session.date + " " + endTime + " " + "2017"
+        return formatter.date(from: fullDate)
+    }
+
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "filterSegue" {
             let sessionsVC = SessionsViewController()
             
@@ -173,7 +190,18 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
                 
             }
             
-            sessionsVC.fetchedSessions = filteredSessions
+            for session in filteredSessions {
+                session.fullDate = createDate(from: session)!
+            }
+            
+            let orderedArray = filteredSessions.sorted {
+                return createDate(from: $0)!.timeIntervalSince(createDate(from: $1)!) < 0
+            }
+            
+            sessionsVC.fetchedSessions = orderedArray
+            
+            
+            
         }
     }
 }

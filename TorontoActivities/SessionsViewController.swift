@@ -14,7 +14,7 @@ class SessionsViewController: UITableViewController {
     
     //MARK:Properties
     
-    var fetchedSessions: Results<Session>!
+    var fetchedSessions: [Session]!
     var fetchedCourses: Results<Course>! // added for test
     var sessionArray = List<Session>()
     
@@ -31,26 +31,22 @@ class SessionsViewController: UITableViewController {
         //        searchManager.getJSON()
         
         //fetching all sessions from database
-        if fetchedSessions == nil {
-            let realm = try! Realm()
-            fetchedSessions = realm.objects(Session.self).filter("ANY course.category = 'Skating'")
-        }
+//        if fetchedSessions == nil {
+//            let realm = try! Realm()
+//            fetchedSessions = realm.objects(Session.self).filter("ANY course.category = 'Skating'")
+//        }
         
-        let realm = try! Realm()
-        fetchedCourses = realm.objects(Course.self)
-        
-        print(fetchedSessions.count)
         
         sessionTableView.reloadData()
         
-        //testing links
-        var i = 1
-        for session in fetchedSessions {
-            
-            print("\((session.course.first?.facility.count)!) -  \(i)")
-            i += 1
-        }
-        
+//        //testing links
+//        var i = 1
+//        for session in fetchedSessions {
+//            
+//            print("\((session.course.first?.facility.count)!) -  \(i)")
+//            i += 1
+//        }
+//        
 
 
         

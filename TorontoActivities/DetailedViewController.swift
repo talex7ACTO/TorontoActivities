@@ -18,7 +18,7 @@ class DetailedViewController: UIViewController {
 
     var selectedFacility : Facility!
     var initialLocation : CLLocation!
-    let regionRadius: CLLocationDistance = 175
+    let regionRadius: CLLocationDistance = 200
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
                                                                   regionRadius * 2.0, regionRadius * 2.0)
