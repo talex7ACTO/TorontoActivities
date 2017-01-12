@@ -10,9 +10,10 @@ import UIKit
 import CoreData
 import RealmSwift
 import CoreLocation
+import MapKit
 
 
-class FilterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
+class FilterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate{
     
     //MARK: Properties
     var filters = [Filter]()
@@ -20,9 +21,14 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     var typeOptions = [String]()
     var pickerData = [String]()
     var selectedFilters = [String]()
+    var locationManager: CLLocationManager!
 
+
+    var locationTuples: [(textField: UITextField?, mapItem: MKMapItem?)]!
 
     
+    @IBOutlet var enterLocationArray: UIButton!
+    @IBOutlet weak var enterLocation: UITextField!
     
     @IBOutlet weak var filterTableView: UITableView!
     @IBOutlet weak var filterView: UIView!
@@ -35,7 +41,16 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        locationTuples = [(enterLocation, nil)]
+
         
+        //location stuff
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        
+        view.backgroundColor = UIColor.gray
+
         
         
         ageGroupOptions = ["Early Child",
@@ -215,6 +230,38 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
             
         }
     }
+    
+    
+    //location  stuff
+    func formatAddressFromPlacemark(placemark: CLPlacemark) -> String {
+        return (placemark.addressDictionary!["FormattedAddressLines"] as!
+            [String]).joined(separator: ", ")
+    }
+    
+    //cglocation delegate methods
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedAlways {
+                    // do stuff
+            manager.startUpdatingLocation()
+        }
+    }
+    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        CLGeocoder().reverseGeocodeLocation(locations.last!,
+                                            completionHandler: {(placemarks:[CLPlacemark]?, error:Error?) -> Void in
+                                                if let placemarks = placemarks {
+                                                    let placemark = placemarks[0]
+                                                    self.locationTuples[0].mapItem = MKMapItem(placemark:
+                                                        MKPlacemark(coordinate: placemark.location!.coordinate,
+                                                                    addressDictionary: placemark.addressDictionary as! [String:AnyObject]?))
+                                                    self.enterLocation.text = self.formatAddressFromPlacemark(placemark: placemark)
+//                                                    self.enterLocationArray.filter{$0.tag == 1}.first!.selected = true
+
+
+
+                                                }
+                                            })
+    }
+
 }
 
 
