@@ -83,18 +83,28 @@ class SessionsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SessionViewCell
 
         configureCell(cell: cell, indexPath: indexPath)
-
+        
+        cell.facilitiesButton.tag = indexPath.row
+        cell.facilitiesButton.addTarget(self, action: #selector(SessionsViewController.buttonTapped(_:)), for: UIControlEvents.touchUpInside)
+        
         return cell
     }
     
-
+    
+    func buttonTapped(_ sender:UIButton!){
+        self.performSegue(withIdentifier: "facilitySegue", sender: sender)
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "FilterSegue" {
-            let filtersVC = segue.destination as! FilterViewController
-            let indexPath = tableView.indexPathForSelectedRow!
-            //coursesVC.selectedFacility = fetchedCourses[indexPath.row]
+        
+        if segue.identifier == "facilitySegue" {
+            if let destination = segue.destination as? DetailedViewController {
+                
+                if let button:UIButton = sender as! UIButton? {
+                    destination.selectedFacility = fetchedSessions[button.tag].course[0].facility[0]
+                }
+            }
         }
     }
 

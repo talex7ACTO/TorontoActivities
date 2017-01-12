@@ -219,18 +219,18 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
 //            } else if selectedFilters[2] != "" {
 //                let filteredSessionsTemp = filteredSessions.filter("ANY course.programName = %@", selectedFilters[2])
 //                filteredSessions = filteredSessionsTemp
-//            }
+            //            }
             
             if selectedFilters[0] != "" {
                 let filteredSessionsTemp = filteredSessions.filter("ANY course.ageGroup = %@", selectedFilters[0])
                 if selectedFilters[1] != "" {
                     let filteredSessionsTemp2 = filteredSessionsTemp.filter("ANY course.programName = %@", selectedFilters[1])
-                        filteredSessions = filteredSessionsTemp2
+                    filteredSessions = filteredSessionsTemp2
                 }
             } else if selectedFilters[1] != "" {
                 let filteredSessionsTemp = filteredSessions.filter("ANY course.programName = %@", selectedFilters[1])
-                    filteredSessions = filteredSessionsTemp
-                }
+                filteredSessions = filteredSessionsTemp
+            }
             
             let orderedArray = filteredSessions.sorted {
                 return createDate(from: $0)!.timeIntervalSince(createDate(from: $1)!) < 0
@@ -268,12 +268,10 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
                                                         MKPlacemark(coordinate: placemark.location!.coordinate,
                                                                     addressDictionary: placemark.addressDictionary as! [String:AnyObject]?))
                                                     self.enterLocation.text = self.formatAddressFromPlacemark(placemark: placemark)
-//                                                    self.enterLocationArray.filter{$0.tag == 1}.first!.selected = true
-
-
-
+                                                    //                                                    self.enterLocationArray.filter{$0.tag == 1}.first!.selected = true
+                                                    
                                                 }
-                                            })
+        })
     }
     
 //    func distanceLocation() -> CLLocationCoordinate2D {
