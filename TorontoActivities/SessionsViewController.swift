@@ -19,6 +19,7 @@ class SessionsViewController: UITableViewController {
     var sessionArray = List<Session>()
     
     @IBOutlet var sessionTableView: UITableView!
+    @IBOutlet var sortBySwitch: UIBarButtonItem!
     
     
     
@@ -98,6 +99,14 @@ class SessionsViewController: UITableViewController {
         }
     }
 
+    
+    @IBAction func sortSwitch(_ sender: Any) {
+        
+        if sortBySwitch.isEnabled{
+            fetchedSessions.sort() { $0.fullDate > $1.fruitName }
+        }
+    }
+    
     
     
     /*
