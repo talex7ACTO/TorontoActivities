@@ -61,7 +61,7 @@ class SessionsViewController: UITableViewController {
         
         cell.sessionNameLabel.text = fetchedSessions[indexPath.row].date + " - \(fetchedSessions[indexPath.row].time)"
         
-        cell.sessionTypeLabel.text = course?.category
+        cell.sessionTypeLabel.text = course?.programName
         cell.sessionAgeGroupLabel.text = course?.ageGroup
 
         
@@ -92,7 +92,7 @@ class SessionsViewController: UITableViewController {
     }
     
     
-    func buttonTapped(_ sender:UIButton!){
+    @IBAction func buttonTapped(_ sender:UIButton!){
         self.performSegue(withIdentifier: "facilitySegue", sender: sender)
     }
     
@@ -110,13 +110,13 @@ class SessionsViewController: UITableViewController {
     }
 
     
-    @IBAction func sortSwitch(_ sender: Any) {
-        
-        if sortBySwitch.isEnabled{
-            fetchedSessions.sort() { $0.fullDate > $1.fruitName }
-        }
-    }
-    
+//    @IBAction func sortSwitch(_ sender: Any) {
+//        
+//        if sortBySwitch.isEnabled{
+//            fetchedSessions.sort() { $0.fullDate > $1.fruitName }
+//        }
+//    }
+//    
     
     
     /*
