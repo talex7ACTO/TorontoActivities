@@ -41,6 +41,8 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         locationTuples = [(enterLocation, nil)]
 
         
@@ -51,7 +53,6 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         
         view.backgroundColor = UIColor.gray
 
-        
         
         ageGroupOptions = ["Early Child",
                            "Child",
@@ -243,9 +244,11 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         if status == .authorizedAlways {
                     // do stuff
             manager.startUpdatingLocation()
+
         }
     }
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        
         CLGeocoder().reverseGeocodeLocation(locations.last!,
                                             completionHandler: {(placemarks:[CLPlacemark]?, error:Error?) -> Void in
                                                 if let placemarks = placemarks {
@@ -261,6 +264,12 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
                                                 }
                                             })
     }
+    
+//    func distanceLocation() -> CLLocationCoordinate2D {
+//        let location = locationManager.location?.coordinate
+//        return CLLocationCoordinate2D(latitude: (location?.latitude)!, longitude: (location?.longitude)!)
+//        
+//    }
 
 }
 
