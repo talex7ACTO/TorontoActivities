@@ -20,7 +20,6 @@ class SessionsViewController: UITableViewController {
     
     @IBOutlet var sessionTableView: UITableView!
     
-    @IBOutlet weak var filterButton: UIButton!
     
     
     

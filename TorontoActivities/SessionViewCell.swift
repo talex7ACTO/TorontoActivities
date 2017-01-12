@@ -10,8 +10,12 @@ import UIKit
 
 class SessionViewCell: UITableViewCell {
 
-    @IBOutlet weak var sessionName: UILabel!
+    @IBOutlet weak var sessionNameLabel: UILabel!
     
+    @IBOutlet var directionsButton: UIButton!
+    @IBOutlet var sessionTypeLabel: UILabel!
+    @IBOutlet var facilitiesButton: UIButton!
+    @IBOutlet var sessionAgeGroupLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,6 +25,12 @@ class SessionViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    
+    @IBAction func goToFacilities(_ sender: Any) {
+    }
+    @IBAction func getDirection(_ sender: Any) {
     }
 
 }
