@@ -258,6 +258,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
 
         }
     }
+    
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         
         CLGeocoder().reverseGeocodeLocation(locations.last!,
