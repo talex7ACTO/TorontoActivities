@@ -22,10 +22,10 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     var pickerData = [String]()
     var selectedFilters = [String]()
     var locationManager: CLLocationManager!
-
-
+    
+    
     var locationTuples: [(textField: UITextField?, mapItem: MKMapItem?)]!
-
+    
     
     @IBOutlet var enterLocationArray: UIButton!
     @IBOutlet weak var enterLocation: UITextField!
@@ -36,7 +36,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var applyFiltersButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-
+    
     @IBOutlet var clearFilterButton: UIButton!
     
     override func viewDidLoad() {
@@ -45,7 +45,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         
         
         locationTuples = [(enterLocation, nil)]
-
+        
         
         //location stuff
         locationManager = CLLocationManager()
@@ -53,7 +53,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         locationManager.requestAlwaysAuthorization()
         
         view.backgroundColor = UIColor.gray
-
+        
         
         ageGroupOptions = ["Early Child",
                            "Child",
@@ -78,7 +78,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
             selectedFilters.append(filter.selectedOption)
             
         }
-    
+        
         filterView.isHidden = true
     }
     
@@ -88,7 +88,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         
         pickerData = filters[indexPath.row].options
         pickerView.reloadAllComponents()
-
+        
         filterView.isHidden = false
         
     }
@@ -103,7 +103,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FilterTableViewCell
-
+        
         cell.filterName.text = filters[indexPath.row].name
         cell.selectionLabel.text = filters[indexPath.row].selectedOption
         return cell
@@ -154,7 +154,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
-
+    
     @IBAction func clearFiltersButton(_ sender: UIButton) {
         
         for i in 0...(filters.count - 1) {
@@ -185,7 +185,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         let fullDate = session.date + " " + endTime + " " + "2017"
         return formatter.date(from: fullDate)
     }
-
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -195,30 +195,35 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
             let realm = try! Realm()
             var filteredSessions = realm.objects(Session.self).filter("ANY course.category = 'Skating'")
             
-            for session in filteredSessions {
-                session.fullDate = createDate(from: session)!
-            }
             
-            
+                for session in filteredSessions {
+                    try! realm.write{
+                    session.fullDate = createDate(from: session)
+                    }
+                }
+//            try! realm.write {
+//                realm.add(filteredSessions, update: true)
+//            }
+//            
             //come up with more elegant solution
-//            if selectedFilters[0] != "" {
-//                let filteredSessionsTemp = filteredSessions.filter("ANY course.ageGroup = %@", selectedFilters[0])
-//                if selectedFilters[1] != "" {
-//                    let filteredSessionsTemp2 = filteredSessionsTemp.filter("ANY course.programName = %@", selectedFilters[1])
-//                    if selectedFilters[2] != "" {
-//                        let filteredSessionsTemp3 = filteredSessionsTemp2.filter("ANY course.programName = %@", selectedFilters[2])
-//                        filteredSessions = filteredSessionsTemp3
-//                    }
-//                }
-//            } else if selectedFilters[1] != "" {
-//                let filteredSessionsTemp = filteredSessions.filter("ANY course.programName = %@", selectedFilters[1])
-//                if selectedFilters[2] != "" {
-//                    let filteredSessionsTemp2 = filteredSessionsTemp.filter("ANY course.programName = %@", selectedFilters[2])
-//                    filteredSessions = filteredSessionsTemp2
-//                }
-//            } else if selectedFilters[2] != "" {
-//                let filteredSessionsTemp = filteredSessions.filter("ANY course.programName = %@", selectedFilters[2])
-//                filteredSessions = filteredSessionsTemp
+            //            if selectedFilters[0] != "" {
+            //                let filteredSessionsTemp = filteredSessions.filter("ANY course.ageGroup = %@", selectedFilters[0])
+            //                if selectedFilters[1] != "" {
+            //                    let filteredSessionsTemp2 = filteredSessionsTemp.filter("ANY course.programName = %@", selectedFilters[1])
+            //                    if selectedFilters[2] != "" {
+            //                        let filteredSessionsTemp3 = filteredSessionsTemp2.filter("ANY course.programName = %@", selectedFilters[2])
+            //                        filteredSessions = filteredSessionsTemp3
+            //                    }
+            //                }
+            //            } else if selectedFilters[1] != "" {
+            //                let filteredSessionsTemp = filteredSessions.filter("ANY course.programName = %@", selectedFilters[1])
+            //                if selectedFilters[2] != "" {
+            //                    let filteredSessionsTemp2 = filteredSessionsTemp.filter("ANY course.programName = %@", selectedFilters[2])
+            //                    filteredSessions = filteredSessionsTemp2
+            //                }
+            //            } else if selectedFilters[2] != "" {
+            //                let filteredSessionsTemp = filteredSessions.filter("ANY course.programName = %@", selectedFilters[2])
+            //                filteredSessions = filteredSessionsTemp
             //            }
             
             if selectedFilters[0] != "" {
@@ -253,9 +258,9 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     //cglocation delegate methods
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways {
-                    // do stuff
+            // do stuff
             manager.startUpdatingLocation()
-
+            
         }
     }
     
@@ -275,12 +280,12 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         })
     }
     
-//    func distanceLocation() -> CLLocationCoordinate2D {
-//        let location = locationManager.location?.coordinate
-//        return CLLocationCoordinate2D(latitude: (location?.latitude)!, longitude: (location?.longitude)!)
-//        
-//    }
-
+    //    func distanceLocation() -> CLLocationCoordinate2D {
+    //        let location = locationManager.location?.coordinate
+    //        return CLLocationCoordinate2D(latitude: (location?.latitude)!, longitude: (location?.longitude)!)
+    //        
+    //    }
+    
 }
 
 

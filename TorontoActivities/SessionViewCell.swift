@@ -16,6 +16,7 @@ class SessionViewCell: UITableViewCell {
     @IBOutlet var sessionTypeLabel: UILabel!
     @IBOutlet var facilitiesButton: UIButton!
     @IBOutlet var sessionAgeGroupLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
 
     
     override func awakeFromNib() {
