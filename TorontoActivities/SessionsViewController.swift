@@ -181,4 +181,17 @@ class SessionsViewController: UITableViewController, MKMapViewDelegate, CLLocati
         print(error)
     }
 
+    
+    @IBAction func directionsTo(_ sender: Any) {
+    }
+    
+    //apple maps feature
+    func openMapsAppWithDirections(to coordinate: CLLocationCoordinate2D, destinationName name: String) {
+        let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+        let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = name // Provide the name of the destination in the To: field
+        mapItem.openInMaps(launchOptions: options)
+    }
+    
 }
