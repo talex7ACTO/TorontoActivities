@@ -232,9 +232,13 @@
                                             <action selector="cancelButton:" destination="gGC-Te-88G" eventType="touchUpInside" id="dhd-55-6gh"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3O-lg-fBk">
-                                        <rect key="frame" x="291" y="24" width="35" height="33"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3O-lg-fBk">
+                                        <rect key="frame" x="287" y="5" width="40" height="37"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="37" id="JRD-4u-OjF"/>
+                                            <constraint firstAttribute="width" constant="40" id="r4O-Wo-bWS"/>
+                                        </constraints>
                                         <state key="normal" image="doneIcon">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -247,11 +251,11 @@
                                 <constraints>
                                     <constraint firstItem="1Mu-Kb-BIm" firstAttribute="width" secondItem="sGP-Ho-1vZ" secondAttribute="width" id="6Xz-Wq-Fql"/>
                                     <constraint firstItem="1Mu-Kb-BIm" firstAttribute="top" secondItem="gzk-od-5UT" secondAttribute="bottom" constant="-6" id="8gr-HN-eTT"/>
-                                    <constraint firstItem="Y3O-lg-fBk" firstAttribute="centerX" secondItem="sGP-Ho-1vZ" secondAttribute="centerX" multiplier="1.6" constant="8.5" id="Q24-Bj-ZGZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Y3O-lg-fBk" secondAttribute="trailing" constant="48" id="K1a-l6-dFG"/>
                                     <constraint firstAttribute="bottom" secondItem="1Mu-Kb-BIm" secondAttribute="bottom" id="RWQ-jK-Dch"/>
                                     <constraint firstItem="1Mu-Kb-BIm" firstAttribute="centerX" secondItem="sGP-Ho-1vZ" secondAttribute="centerX" id="Yq0-pY-9fa"/>
                                     <constraint firstItem="gzk-od-5UT" firstAttribute="centerX" secondItem="sGP-Ho-1vZ" secondAttribute="centerX" multiplier="0.4" constant="-7" id="jje-rn-8aw"/>
-                                    <constraint firstItem="1Mu-Kb-BIm" firstAttribute="top" secondItem="Y3O-lg-fBk" secondAttribute="bottom" constant="-6" id="keR-N9-8Wn"/>
+                                    <constraint firstItem="Y3O-lg-fBk" firstAttribute="centerY" secondItem="gzk-od-5UT" secondAttribute="centerY" id="nic-iP-qUb"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQb-AE-aqB">

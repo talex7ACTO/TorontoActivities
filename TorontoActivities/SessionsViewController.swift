@@ -170,7 +170,7 @@ class SessionsViewController: UITableViewController, MKMapViewDelegate, CLLocati
             let facilityLocation = CLLocation(latitude: 0, longitude: 0)
             let initialDistance = currentLocation.distance(from: facilityLocation) / 1000
             
-            let distanceString = "\(initialDistance) km"
+            let distanceString = (String(format: "%02d km", initialDistance))
             
             
             
@@ -192,7 +192,7 @@ class SessionsViewController: UITableViewController, MKMapViewDelegate, CLLocati
 
     
     @IBAction func directionsTo(_ sender: Any) {
-        openMapsAppWithDirections(to: <#T##CLLocationCoordinate2D#>, destinationName: <#T##String#>)
+        
     }
     
     //apple maps feature
