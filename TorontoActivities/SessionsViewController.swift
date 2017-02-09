@@ -129,7 +129,7 @@ class SessionsViewController: UITableViewController {
         
         let time = Int(interval)
         
-        let minutes = (time / 60) % 60
+        let minutes = (String(format: "%02d", ((time / 60) % 60)))
         let hours = (time / 3600)
         let dateString = "\(hours):\(minutes) \nTime Left"
         

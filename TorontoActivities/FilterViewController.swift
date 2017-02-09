@@ -201,10 +201,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
                     session.fullDate = createDate(from: session)
                     }
                 }
-//            try! realm.write {
-//                realm.add(filteredSessions, update: true)
-//            }
-//            
+
             //come up with more elegant solution
             //            if selectedFilters[0] != "" {
             //                let filteredSessionsTemp = filteredSessions.filter("ANY course.ageGroup = %@", selectedFilters[0])
