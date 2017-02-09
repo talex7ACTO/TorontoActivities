@@ -75,7 +75,9 @@ class SessionsViewController: UITableViewController,MKMapViewDelegate  {
             label.text = stringFromTimeInterval(interval: (date?.timeIntervalSinceNow)!)
         }
         //ditance label
-        
+//        if let label2 = cell.distanceLabel{
+//            label2.text = distanceBetween(distance: Double)
+//        }
     }
 
     // MARK: - Table view data source
@@ -140,7 +142,7 @@ class SessionsViewController: UITableViewController,MKMapViewDelegate  {
         
         return dateString
     }
-    
+    //Disatnce
     func distanceBetween() {
         
         let currentLocation = CLLocation()
@@ -148,13 +150,15 @@ class SessionsViewController: UITableViewController,MKMapViewDelegate  {
         let currentLong = self.locationManager.location!.coordinate.longitude
         
         
-        var myLocation = CLLocation(latitude: currentLat, longitude: currentLong)
+        let myLocation = CLLocation(latitude: currentLat, longitude: currentLong)
         let dVC = DetailedViewController()
         
         let facilityLocation = dVC.initialLocation
-        let Initialdistance = myLocation.distance(from: facilityLocation!)
+        let Initialdistance = myLocation.distance(from: facilityLocation!) / 1000
 //        let shop1 = coffeeShop(location: distance1)!
-        
+        let distanceString = "\(Initialdistance)"
+//        return distanceString
+        print(distanceString)
     }
 
 }
