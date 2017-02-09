@@ -356,6 +356,7 @@
                                                 <color key="titleShadowColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
+                                                <action selector="directionsTo:" destination="Alx-aZ-v4N" eventType="touchUpInside" id="jWe-Ml-Gx2"/>
                                                 <action selector="getDirection:" destination="3o5-5y-kq7" eventType="touchUpInside" id="ecU-3Q-40F"/>
                                             </connections>
                                         </button>
