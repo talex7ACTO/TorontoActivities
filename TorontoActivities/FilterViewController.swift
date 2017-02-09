@@ -55,12 +55,13 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         view.backgroundColor = UIColor.gray
         
         
-        ageGroupOptions = ["Early Child",
+        ageGroupOptions = ["Early-Child",
                            "Child",
                            "Youth",
-                           "Child & Youth",
+                           "Child/Youth",
                            "Adult",
-                           "Older Adult"]
+                           "Older-Adult",
+                           "All-Ages"]
         
         typeOptions = ["Hockey-&-Shinny",
                        "Leisure-Skating",
