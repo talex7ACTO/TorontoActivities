@@ -158,16 +158,25 @@ class SessionsViewController: UITableViewController, MKMapViewDelegate, CLLocati
         
         let currentLocation = self.locationManager.location!
         
-        let facilityLocation = CLLocation(latitude: Double(facility.latitude)!, longitude: Double(facility.longitude)!)
-        
-        let initialDistance = currentLocation.distance(from: facilityLocation) / 1000
-//        let shop1 = coffeeShop(location: distance1)!
-        let distanceString = "\(initialDistance) km"
-        
-//        self.locationManager.stopUpdatingLocation()
-        
-        return distanceString
-//        print(distanceString)
+        if let lat = facility.latitude, let long = facility.longitude {
+            let facilityLocation = CLLocation(latitude: Double(lat)!, longitude: Double(long)!)
+            let initialDistance = currentLocation.distance(from: facilityLocation) / 1000
+            
+            let distanceString = "\(initialDistance) km"
+            return distanceString
+            
+        } else {
+            
+            let facilityLocation = CLLocation(latitude: 0, longitude: 0)
+            let initialDistance = currentLocation.distance(from: facilityLocation) / 1000
+            
+            let distanceString = "\(initialDistance) km"
+            
+            
+            
+            return distanceString
+        }
+
     }
     
     //CLLocation Delegate Methods

@@ -16,8 +16,8 @@ class Facility: Object, Mappable  {
     //Realm syntax
     dynamic var accessibility = ""
     dynamic var address = ""
-    dynamic var latitude = ""
-    dynamic var longitude = ""
+    dynamic var latitude : String?
+    dynamic var longitude : String?
     dynamic var locationID = ""
     dynamic var name = ""
     dynamic var phone = ""
