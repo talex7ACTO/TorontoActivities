@@ -192,6 +192,7 @@ class SessionsViewController: UITableViewController, MKMapViewDelegate, CLLocati
 
     
     @IBAction func directionsTo(_ sender: Any) {
+        openMapsAppWithDirections(to: <#T##CLLocationCoordinate2D#>, destinationName: <#T##String#>)
     }
     
     //apple maps feature

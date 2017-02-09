@@ -282,7 +282,7 @@
                         <constraints>
                             <constraint firstItem="bQb-AE-aqB" firstAttribute="centerX" secondItem="C8c-HA-3mJ" secondAttribute="centerX" constant="64" id="7dK-qb-6lb"/>
                             <constraint firstItem="sGP-Ho-1vZ" firstAttribute="leading" secondItem="C8c-HA-3mJ" secondAttribute="leading" id="S7g-zo-zhN"/>
-                            <constraint firstItem="bQb-AE-aqB" firstAttribute="centerY" secondItem="C8c-HA-3mJ" secondAttribute="centerY" id="Zp3-86-F7M"/>
+                            <constraint firstItem="bQb-AE-aqB" firstAttribute="centerY" secondItem="C8c-HA-3mJ" secondAttribute="centerY" constant="24" id="Zp3-86-F7M"/>
                             <constraint firstItem="sGP-Ho-1vZ" firstAttribute="height" secondItem="C8c-HA-3mJ" secondAttribute="height" multiplier="0.4" id="jwl-fj-8dw"/>
                             <constraint firstItem="bQb-AE-aqB" firstAttribute="width" secondItem="C8c-HA-3mJ" secondAttribute="width" multiplier="0.7" constant="-47.5" id="oGp-yY-Yg8"/>
                             <constraint firstItem="hAR-HA-XoT" firstAttribute="top" secondItem="sGP-Ho-1vZ" secondAttribute="bottom" id="sYQ-s0-me3"/>
@@ -350,7 +350,6 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBR-qh-ZJZ">
                                             <rect key="frame" x="328" y="8" width="47" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" title="D" image="directionsIcon">
                                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="titleShadowColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -363,7 +362,6 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACN-dG-gFv">
                                             <rect key="frame" x="328" y="47" width="47" height="39"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" image="Icon-App-29x29">
                                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>

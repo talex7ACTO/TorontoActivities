@@ -14,8 +14,8 @@ import AlamofireObjectMapper
 class SearchManager2: NSObject {
     
     func getJSON() {
-        for i in 1...4 {
-            Alamofire.request("https://toronto-activities.herokuapp.com/activities/\(i)", method: .get).responseArray { (response: DataResponse<[Facility]>) in
+//        for i in 1...4 {
+            Alamofire.request("https://toronto-activities.herokuapp.com/activities/1", method: .get).responseArray { (response: DataResponse<[Facility]>) in
                 guard let facilities = response.result.value else { return }
                 let realm = try! Realm()
                 try! realm.write {
@@ -23,7 +23,7 @@ class SearchManager2: NSObject {
                     realm.add(facilities, update: true)
                 }
             
-            }
+//            }
             
         }
     }
