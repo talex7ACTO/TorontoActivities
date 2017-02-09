@@ -9,10 +9,15 @@
 import UIKit
 import CoreData
 import RealmSwift
+import MapKit
+import CoreLocation
 
-class SessionsViewController: UITableViewController {
+class SessionsViewController: UITableViewController,MKMapViewDelegate  {
     
     //MARK:Properties
+    var locationManager = CLLocationManager()
+
+    
     
     var fetchedSessions: [Session]!
     var fetchedCourses: Results<Course>! // added for test
@@ -69,7 +74,7 @@ class SessionsViewController: UITableViewController {
         if let label = cell.timeLabel {
             label.text = stringFromTimeInterval(interval: (date?.timeIntervalSinceNow)!)
         }
-        
+        //ditance label
         
     }
 
@@ -134,6 +139,22 @@ class SessionsViewController: UITableViewController {
         let dateString = "\(hours):\(minutes) \nTime Left"
         
         return dateString
+    }
+    
+    func distanceBetween() {
+        
+        let currentLocation = CLLocation()
+        let currentLat = self.locationManager.location!.coordinate.latitude
+        let currentLong = self.locationManager.location!.coordinate.longitude
+        
+        
+        var myLocation = CLLocation(latitude: currentLat, longitude: currentLong)
+        let dVC = DetailedViewController()
+        
+        let facilityLocation = dVC.initialLocation
+        let Initialdistance = myLocation.distance(from: facilityLocation!)
+//        let shop1 = coffeeShop(location: distance1)!
+        
     }
 
 }
