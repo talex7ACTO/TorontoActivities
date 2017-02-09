@@ -12,10 +12,12 @@ import RealmSwift
 import MapKit
 import CoreLocation
 
-class SessionsViewController: UITableViewController,MKMapViewDelegate  {
+class SessionsViewController: UITableViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
     
     //MARK:Properties
     var locationManager = CLLocationManager()
+    
+    
 
     
     
@@ -41,7 +43,7 @@ class SessionsViewController: UITableViewController,MKMapViewDelegate  {
 //            fetchedSessions = realm.objects(Session.self).filter("ANY course.category = 'Skating'")
 //        }
         
-        
+        locationManager.delegate = self
         sessionTableView.reloadData()
         
 //        //testing links
@@ -76,7 +78,7 @@ class SessionsViewController: UITableViewController,MKMapViewDelegate  {
         }
 //        distance label
         if let label2 = cell.distanceLabel{
-            label2.text = distanceBetween(distance: Double)
+            label2.text = distanceBetween(facility: facility!)
         }
     }
 
@@ -145,18 +147,38 @@ class SessionsViewController: UITableViewController,MKMapViewDelegate  {
     //Disatnce
     func distanceBetween(facility: Facility) -> String {
         
-        let currentLat = self.locationManager.location!.coordinate.latitude
-        let currentLong = self.locationManager.location!.coordinate.longitude
         
-        let currentLocation = CLLocation(latitude: currentLat, longitude: currentLong)
+        self.locationManager.requestLocation()
+//        let currentLat = self.locationManager.location!.coordinate.latitude
+//        let currentLong = self.locationManager.location!.coordinate.longitude
         
-        CLLocation(latitude: Double(selectedFacility.latitude)!, longitude: Double(selectedFacility.longitude)!)
+//        self.locationManager.startUpdatingLocation()
         
-        let Initialdistance = currentLocation.distance(from: facilityLocation!) / 1000
+//        let currentLocation = CLLocation(latitude: currentLat, longitude: currentLong)
+        
+        let currentLocation = self.locationManager.location!
+        
+        let facilityLocation = CLLocation(latitude: Double(facility.latitude)!, longitude: Double(facility.longitude)!)
+        
+        let initialDistance = currentLocation.distance(from: facilityLocation) / 1000
 //        let shop1 = coffeeShop(location: distance1)!
-        let distanceString = "\(Initialdistance)"
+        let distanceString = "\(initialDistance) km"
+        
+//        self.locationManager.stopUpdatingLocation()
+        
         return distanceString
 //        print(distanceString)
+    }
+    
+    //CLLocation Delegate Methods
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(locations)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
     }
 
 }
